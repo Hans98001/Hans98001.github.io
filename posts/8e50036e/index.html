@@ -16,8 +16,8 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/posts/8e50036e/ckpt-e1566112139792.jpg">
 <meta property="og:image" content="http://example.com/posts/8e50036e/tensorboard.png">
-<meta property="article:published_time" content="2020-09-16T08:31:41.000Z">
-<meta property="article:modified_time" content="2020-09-16T08:49:41.940Z">
+<meta property="article:published_time" content="2019-08-18T08:31:41.000Z">
+<meta property="article:modified_time" content="2020-09-16T09:56:08.203Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -73,7 +73,7 @@
         <section id="main"><article id="post-通过freeze-graph将TensorFlow模型转换为FrozenGraph并进行预测" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/8e50036e/" class="article-date">
-  <time datetime="2020-09-16T08:31:41.000Z" itemprop="datePublished">2020-09-16</time>
+  <time datetime="2019-08-18T08:31:41.000Z" itemprop="datePublished">2019-08-18</time>
 </a>
     
   <div class="article-category">
@@ -111,7 +111,6 @@
 <p>​    网上的教程大多使用了Bazel，但是我在尝试的时候遇到了一些困难，后来发现可以使用python，由于每个人TensorFlow安装的位置也不太一样，就可以直接在Pycharm中调用，代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.tools <span class="keyword">import</span> freeze_graph</span><br><span class="line"></span><br><span class="line">freeze_graph.freeze_graph(input_graph=<span class="string">&#x27;graph.pb&#x27;</span>, <span class="comment"># 要转换的计算图</span></span><br><span class="line">                          input_saver=<span class="string">&quot;&quot;</span>, <span class="comment"># 为空即可</span></span><br><span class="line">                          input_binary=<span class="literal">True</span>, <span class="comment"># 传递pb文件，则为True</span></span><br><span class="line">                          input_checkpoint=<span class="string">&#x27;model4.ckpt-1486&#x27;</span>, <span class="comment"># 输入的权重，不需要最后的后缀</span></span><br><span class="line">                          output_graph=<span class="string">&#x27;freeze_graph.pb&#x27;</span>, <span class="comment"># 输出的冻结图</span></span><br><span class="line">                          output_node_names=<span class="string">&quot;MatMul_2,output_pred&quot;</span>, <span class="comment"># 计算图的输出节点，详见下文</span></span><br><span class="line">                          restore_op_name=<span class="string">&#x27;&#x27;</span>, <span class="comment"># 为空即可</span></span><br><span class="line">                          filename_tensor_name=<span class="string">&#x27;&#x27;</span>, <span class="comment"># 为空即可</span></span><br><span class="line">                          clear_devices=<span class="literal">True</span>, <span class="comment"># 为平台设备的兼容性，清除默认设备</span></span><br><span class="line">                          initializer_nodes=<span class="string">&#x27;&#x27;</span> <span class="comment"># 为空即可)</span></span><br></pre></td></tr></table></figure>
 
-<blockquote>
 <ul>
 <li>input_graph：模型文件，可以是二进制的pb文件，或文本的pbtxt文件，用input_binary来指定区分</li>
 <li>input_saver：TensorFlow Saver file</li>
@@ -124,7 +123,6 @@
 <li>clear_devices：指定是否清除训练时节点指定的运算设备（如cpu、gpu、tpu。cpu是默认）</li>
 <li>initializer_nodes：权限加载后，可通过此参数来指定需要初始化的节点，用逗号分隔多个节点名字。</li>
 </ul>
-</blockquote>
 <ol>
 <li>若计算图的输出节点训练时已经在placeholder中添加name参数，则易于确定输出节点的名字</li>
 <li>若未添加name参数，则可以通过TensorBoard确定输出节点，TensorBoard可通过<code>tensorboard --logdir=C:\Users\logs</code>运行，其中，logs文件夹内包含日志文件（日志文件由<code>wirter = tf.summary.FileWriter(&#39;logs/&#39;,ss.graph)</code>语句产生）</li>
@@ -147,6 +145,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/posts/4a17b156/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
   
   
     <a href="/posts/4a5480b5/" id="article-nav-older" class="article-nav-link-wrap">
@@ -209,15 +216,15 @@
       <ul>
         
           <li>
+            <a href="/posts/4a17b156/">Hello World</a>
+          </li>
+        
+          <li>
             <a href="/posts/8e50036e/">通过freeze_graph将TensorFlow模型转换为FrozenGraph并进行预测</a>
           </li>
         
           <li>
             <a href="/posts/4a5480b5/">TensorFlow将已训练模型保存并预测</a>
-          </li>
-        
-          <li>
-            <a href="/posts/4a17b156/">Hello World</a>
           </li>
         
           <li>
