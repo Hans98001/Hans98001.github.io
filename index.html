@@ -142,15 +142,13 @@
         <p>​        在训练过程中，<code>tf.train.Saver()</code>通常不会将权重数据保存在计算图中，反而是分开保存在checkpoint检查点文件里，当模型初始化时，通过模型文件里的变量Op节点来从checkpoint文件读取数据并初始化变量。这种模型和权重数据分开保存的情况，在产品使用时为了恢复模型需要额外计算，所以便有了freeze_graph.py脚本文件用来将计算图和权重合二为一，减少对边缘设备的性能要求。</p>
 <img src="/posts/8e50036e/ckpt-e1566112139792.jpg" style="zoom:67%;">
 
-<blockquote>
 <ul>
 <li>checkpoint是检查点文件，文件保存了一个目录下所有的模型文件列表；</li>
 <li>model.ckpt.meta文件保存了TensorFlow计算图的结构，可以理解为神经网络的网络结构，该文件可以被tf.train.import_meta_graph 加载到当前默认的图来使用。</li>
 <li>ckpt.data：保存模型中每个变量的取值</li>
 <li>pb文件能够保存TensorFlow计算图中的操作节点以及对应的各张量，方便我们日后直接调用之前已经训练好的计算图</li>
 </ul>
-</blockquote>
-<p>​    ckpt检查点文件与pb文件的生成请看<a target="_blank" rel="noopener" href="http://47.93.15.111/77.html">TensorFlow将已训练模型保存并预测</a></p>
+<p>​    ckpt检查点文件与pb文件的生成请看<a target="_blank" rel="noopener" href="https://hans98001.github.io/posts/4a5480b5/">TensorFlow将已训练模型保存并预测</a></p>
 <p>​    网上的教程大多使用了Bazel，但是我在尝试的时候遇到了一些困难，后来发现可以使用python，由于每个人TensorFlow安装的位置也不太一样，就可以直接在Pycharm中调用，代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.tools <span class="keyword">import</span> freeze_graph</span><br><span class="line"></span><br><span class="line">freeze_graph.freeze_graph(input_graph=<span class="string">&#x27;graph.pb&#x27;</span>, <span class="comment"># 要转换的计算图</span></span><br><span class="line">                          input_saver=<span class="string">&quot;&quot;</span>, <span class="comment"># 为空即可</span></span><br><span class="line">                          input_binary=<span class="literal">True</span>, <span class="comment"># 传递pb文件，则为True</span></span><br><span class="line">                          input_checkpoint=<span class="string">&#x27;model4.ckpt-1486&#x27;</span>, <span class="comment"># 输入的权重，不需要最后的后缀</span></span><br><span class="line">                          output_graph=<span class="string">&#x27;freeze_graph.pb&#x27;</span>, <span class="comment"># 输出的冻结图</span></span><br><span class="line">                          output_node_names=<span class="string">&quot;MatMul_2,output_pred&quot;</span>, <span class="comment"># 计算图的输出节点，详见下文</span></span><br><span class="line">                          restore_op_name=<span class="string">&#x27;&#x27;</span>, <span class="comment"># 为空即可</span></span><br><span class="line">                          filename_tensor_name=<span class="string">&#x27;&#x27;</span>, <span class="comment"># 为空即可</span></span><br><span class="line">                          clear_devices=<span class="literal">True</span>, <span class="comment"># 为平台设备的兼容性，清除默认设备</span></span><br><span class="line">                          initializer_nodes=<span class="string">&#x27;&#x27;</span> <span class="comment"># 为空即可)</span></span><br></pre></td></tr></table></figure>
 
