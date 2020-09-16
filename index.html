@@ -113,6 +113,158 @@
 
 
   
+    <article id="post-树莓派安装Pytorch踩坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/33e1d606/" class="article-date">
+  <time datetime="2019-09-22T10:15:01.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94%E7%A9%B6/">研究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/33e1d606/">树莓派安装Pytorch踩坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Pytorch不像TensorFlow一样提供了预编译的安装文件，只能麻烦自己来手动编译一下了</p>
+<p><strong>前提条件</strong><br>首先sd最好是16Gb或者32Gb的，然后安装好系统后，对系统进行更新</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt upgrade</span><br><span class="line">sudo apt install vim</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>增加交换区的大小到2G</strong></p>
+<p>树莓派3B+只有1GB的内存容量，在编译PyTorch的过程中可能会爆内存。因此我们需要划分一些SWAP空间出来。其基本原理就是当内存吃紧的时候，用一部分硬盘（对于本文来说就是Micro SD卡）空间来减轻内存的负担。</p>
+<p>首先通过命令打开交换区设置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/dphys-swapfile</span><br></pre></td></tr></table></figure>
+
+<p>接着找出常量CONF_SWAPSIZE和CONF_MAXSWAP，把后面的默认的100改成2048。<br>然后执行以下命令激活交换文件系统：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/dphys-swapfile stop</span><br><span class="line">sudo /etc/init.d/dphys-swapfile start</span><br></pre></td></tr></table></figure>
+
+<p>接着安装依赖包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libopenblas-dev cython3 libatlas-dev m4 libblas-dev cmake</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>下载Pytorch源代码</strong><br>这个时候我们可以用git下载源代码了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --recursive https://github.com/pytorch/pytorch</span><br></pre></td></tr></table></figure>
+
+<p>打开pytorch安装目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd pytorch</span><br></pre></td></tr></table></figure>
+
+<p>切换到我们想安装的版本，例如v1.0.1：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout tags/v1.0.1 -b build</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>设置环境变量</strong><br>这一步非常重要，如果环境变量设置不正确，编译的过程会报错。例如：<br>Failed to run ‘bash tools/build_pytorch_libs.sh –use-cuda –use-nnpack –use mkldnn –use qnnpack caffe2’<br>我们可以利用export命令，设置所需要的环境变量，例如我们把cuda支持去掉，因为树莓派不支持cuda。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export NO_CUDA=1</span><br><span class="line">export NO_DISTRIBUTED=1</span><br><span class="line">export NO_MKLDNN=1</span><br><span class="line">export NO_NNPACK=1</span><br><span class="line">export NO_QNNPACK=1</span><br></pre></td></tr></table></figure>
+
+<p>树莓派运行内存有限，如果这个值较大，编译的时候会卡死，将编译的jobs数量减小反而会编译得更快</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export MAX_JOBS=2</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>编译Pytorch</strong><br>这个时候我们就可以开始编译Pytorch。<br>如果在日后再次安装或在另一台树莓派上安装时不想花时间再次编译，那么可以先生成一个wheel文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 setup.py bdist_wheel</span><br></pre></td></tr></table></figure>
+
+<p>然后去dist文件夹去安装你生成的wheel文件，其文件名取决于你用了Pytorch的哪个分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd dist</span><br><span class="line">pip3 install ./torch-1.0.0a0+8322165-cp35-cp35m-linux_armv7l.whl </span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>下载预编译的安装文件</strong></p>
+<p>这些都是从网上找到的一些预编译的安装文件，统一收集在这里，单击即可下载。</p>
+<p>自己编译最后还是出现了一些问题，也找不到解决方法，还是用的编译好的文件直接安装的</p>
+<p><a href="/download/torch-0.4.0a03749c58-cp35-cp35m-linux_armv7l.whl">Python 3.5 Pytorch 0.4.0</a></p>
+<p><a href="/download/torch-1.0.0a08322165-cp35-cp35m-linux_armv7l.whl">Python 3.5 Pytorch 1.0.0</a></p>
+<p><a href="/download/torch-0.4.0a03749c58-cp36-cp36m-linux_armv7l.whl">Python 3.6 Pytorch 0.4.0</a></p>
+<p><strong>参考文章</strong></p>
+<p>手动编译Pytorch遇到了很多问题，在这里参考了以下文章，本文也有部分引用</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57938855">在树莓派上安装PyTorch 1.0</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhouxzh123/article/details/88652312">在树莓派上编译安装pytorch</a></p>
+<p><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html">在</a><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html"> Rasp</a><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html">berryPi</a><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html"> 上编译 PyTorch</a></p>
+<p><a target="_blank" rel="noopener" href="https://wormtooth.com/20180617-pytorch-on-raspberrypi/">Pytorch on RaspberryPi</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/posts/33e1d606/" data-id="ckf58efo300018ou2hrk6618u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-深度学习下不同参数的意义" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/c991ad4c/" class="article-date">
+  <time datetime="2019-08-22T10:08:24.000Z" itemprop="datePublished">2019-08-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%A0%94%E7%A9%B6/">研究</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/c991ad4c/">深度学习下不同参数的意义</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在看代码的时候发现了很多参数决定了算法的运行，数量比较多又容易混淆，就放在这里一起总结一下</p>
+<ul>
+<li>epoch：一个epoch表示过了一遍训练集中的所有样本</li>
+<li>batch_size：一次迭代所使用的样本量</li>
+<li>learning_rate：决定着目标函数能否收敛到局部最小值以及何时收敛到最小值。合适的学习率能够使目标函数在合适的时间内收敛到局部最小值</li>
+<li>dropout_keep_prob：每个元素被保留的概率，1就是所有元素全部保留的意思，一般在大量数据训练时，为了防止过拟合，添加Dropout层，设置一个0~1之间的小数</li>
+<li>training_step：表示一次迭代（也叫iteration），每次迭代更新1次网络结构的参数</li>
+</ul>
+<p><img src="/posts/c991ad4c/epoch.png" alt="epoch"></p>
+<p>​    如定义10000次迭代为1个epoch，若每次迭代的batch-size设为256，那么1个epoch相当于过了2560000个训练样本。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/posts/c991ad4c/" data-id="ckf58efo000008ou287o7bjd0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-通过freeze-graph将TensorFlow模型转换为FrozenGraph并进行预测" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/8e50036e/" class="article-date">
@@ -459,7 +611,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
     </div>
   </div>
 
@@ -476,15 +628,19 @@
           </li>
         
           <li>
+            <a href="/posts/33e1d606/">树莓派安装Pytorch踩坑</a>
+          </li>
+        
+          <li>
+            <a href="/posts/c991ad4c/">深度学习下不同参数的意义</a>
+          </li>
+        
+          <li>
             <a href="/posts/8e50036e/">通过freeze_graph将TensorFlow模型转换为FrozenGraph并进行预测</a>
           </li>
         
           <li>
             <a href="/posts/4a5480b5/">TensorFlow将已训练模型保存并预测</a>
-          </li>
-        
-          <li>
-            <a href="/posts/acfa3dd9/">如何解释关系数据库的范式</a>
           </li>
         
       </ul>
