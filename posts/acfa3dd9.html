@@ -15,6 +15,7 @@
 <meta property="og:description" content="如何解释关系数据库的范式？首先要明白”范式（NF）”是什么意思。按照教材中的定义，范式是“符合某一种级别的关系模式的集合，表示一个关系内部各属性之间的联系的合理化程度”。很晦涩吧？实际上你可以把它粗略地理解为一张数据表的表结构所符合的某种设计标准的级别。就像家里装修买建材，最环保的是E0级，其次是E1级，还有E2级等等。数据库范式也分为1NF，2NF，3NF，BCNF，4NF，5NF。一般在我们设">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/posts/db-01.jpg">
+<meta property="og:image" content="http://example.com/posts/db-01.jpg">
 <meta property="og:image" content="http://example.com/posts/db-02.jpg">
 <meta property="og:image" content="http://example.com/posts/db-03.jpg">
 <meta property="og:image" content="http://example.com/posts/db-04.jpg">
@@ -27,7 +28,7 @@
 <meta property="og:image" content="http://example.com/posts/db-11.jpg">
 <meta property="og:image" content="http://example.com/posts/db-12.jpg">
 <meta property="article:published_time" content="2020-09-15T10:15:32.000Z">
-<meta property="article:modified_time" content="2020-09-15T12:40:31.000Z">
+<meta property="article:modified_time" content="2020-09-16T05:56:21.282Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
@@ -110,6 +111,8 @@
 <h2 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a>第一范式（1NF）</h2><p>接下来就对每一级范式进行一下解释，首先是<strong>第一范式（1NF）</strong></p>
 <p>符合1NF的关系（你可以理解为数据表。“关系模式”和“关系”的区别，类似于面向对象程序设计中”类“与”对象“的区别。”关系“是”关系模式“的一个实例，你可以把”关系”理解为一张带数据的表，而“关系模式”是这张数据表的表结构。<strong>1NF的定义为：符合1NF的关系中的每个属性都不可再分。表1</strong>所示的情况，就不符合1NF的要求。</p>
 <img src="/posts/db-01.jpg" alt="表1" style="zoom:80%;">
+
+<img src="/posts/db-01.jpg" alt="图1" style="zoom:80%;">
 
 <p>实际上，<strong>1NF是所有关系型数据库的最基本要求</strong>，你在关系型数据库管理系统（RDBMS），例如SQL Server，Oracle，MySQL中创建数据表的时候，如果数据表的设计不符合这个最基本的要求，那么操作一定是不能成功的。也就是说，只要在RDBMS中已经存在的数据表，一定是符合1NF的。如果我们要在RDBMS中表现表中的数据，就得设计为<strong>表2</strong>的形式：</p>
 <img src="/posts/db-02.jpg" alt="表2" style="zoom:80%;">
