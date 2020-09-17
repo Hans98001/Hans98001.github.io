@@ -1,304 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-
-  
-  <title>树莓派安装Pytorch踩坑 | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Pytorch不像TensorFlow一样提供了预编译的安装文件，只能麻烦自己来手动编译一下了 前提条件首先sd最好是16Gb或者32Gb的，然后安装好系统后，对系统进行更新 12sudo apt update &amp;&amp; sudo apt upgradesudo apt install vim    增加交换区的大小到2G 树莓派3B+只有1GB的内存容量，在编译PyTorch的过程中">
-<meta property="og:type" content="article">
-<meta property="og:title" content="树莓派安装Pytorch踩坑">
-<meta property="og:url" content="http://example.com/posts/33e1d606/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Pytorch不像TensorFlow一样提供了预编译的安装文件，只能麻烦自己来手动编译一下了 前提条件首先sd最好是16Gb或者32Gb的，然后安装好系统后，对系统进行更新 12sudo apt update &amp;&amp; sudo apt upgradesudo apt install vim    增加交换区的大小到2G 树莓派3B+只有1GB的内存容量，在编译PyTorch的过程中">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-09-22T10:15:01.000Z">
-<meta property="article:modified_time" content="2020-09-16T10:17:30.357Z">
-<meta property="article:author" content="John Doe">
-<meta property="article:tag" content="机器学习">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
-
-<meta name="generator" content="Hexo 5.1.1"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-树莓派安装Pytorch踩坑" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/posts/33e1d606/" class="article-date">
-  <time datetime="2019-09-22T10:15:01.000Z" itemprop="datePublished">2019-09-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%A0%94%E7%A9%B6/">研究</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      树莓派安装Pytorch踩坑
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Pytorch不像TensorFlow一样提供了预编译的安装文件，只能麻烦自己来手动编译一下了</p>
-<p><strong>前提条件</strong><br>首先sd最好是16Gb或者32Gb的，然后安装好系统后，对系统进行更新</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt upgrade</span><br><span class="line">sudo apt install vim</span><br></pre></td></tr></table></figure>
+{% extends '_layout.swig' %}
+{% import '_macro/post.swig' as post_template %}
+{% import '_macro/sidebar.swig' as sidebar_template %}
 
 
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-<p><strong>增加交换区的大小到2G</strong></p>
-<p>树莓派3B+只有1GB的内存容量，在编译PyTorch的过程中可能会爆内存。因此我们需要划分一些SWAP空间出来。其基本原理就是当内存吃紧的时候，用一部分硬盘（对于本文来说就是Micro SD卡）空间来减轻内存的负担。</p>
-<p>首先通过命令打开交换区设置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/dphys-swapfile</span><br></pre></td></tr></table></figure>
-
-<p>接着找出常量CONF_SWAPSIZE和CONF_MAXSWAP，把后面的默认的100改成2048。<br>然后执行以下命令激活交换文件系统：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/dphys-swapfile stop</span><br><span class="line">sudo /etc/init.d/dphys-swapfile start</span><br></pre></td></tr></table></figure>
-
-<p>接着安装依赖包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libopenblas-dev cython3 libatlas-dev m4 libblas-dev cmake</span><br></pre></td></tr></table></figure>
+{% block page_class %}page-post-detail{% endblock %}
 
 
+{% block content %}
 
-<p><strong>下载Pytorch源代码</strong><br>这个时候我们可以用git下载源代码了。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --recursive https://github.com/pytorch/pytorch</span><br></pre></td></tr></table></figure>
+  <div id="posts" class="posts-expand">
+    {{ post_template.render(page) }}
 
-<p>打开pytorch安装目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd pytorch</span><br></pre></td></tr></table></figure>
-
-<p>切换到我们想安装的版本，例如v1.0.1：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout tags/v1.0.1 -b build</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>设置环境变量</strong><br>这一步非常重要，如果环境变量设置不正确，编译的过程会报错。例如：<br>Failed to run ‘bash tools/build_pytorch_libs.sh –use-cuda –use-nnpack –use mkldnn –use qnnpack caffe2’<br>我们可以利用export命令，设置所需要的环境变量，例如我们把cuda支持去掉，因为树莓派不支持cuda。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export NO_CUDA=1</span><br><span class="line">export NO_DISTRIBUTED=1</span><br><span class="line">export NO_MKLDNN=1</span><br><span class="line">export NO_NNPACK=1</span><br><span class="line">export NO_QNNPACK=1</span><br></pre></td></tr></table></figure>
-
-<p>树莓派运行内存有限，如果这个值较大，编译的时候会卡死，将编译的jobs数量减小反而会编译得更快</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export MAX_JOBS=2</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>编译Pytorch</strong><br>这个时候我们就可以开始编译Pytorch。<br>如果在日后再次安装或在另一台树莓派上安装时不想花时间再次编译，那么可以先生成一个wheel文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 setup.py bdist_wheel</span><br></pre></td></tr></table></figure>
-
-<p>然后去dist文件夹去安装你生成的wheel文件，其文件名取决于你用了Pytorch的哪个分支</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd dist</span><br><span class="line">pip3 install ./torch-1.0.0a0+8322165-cp35-cp35m-linux_armv7l.whl </span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>下载预编译的安装文件</strong></p>
-<p>这些都是从网上找到的一些预编译的安装文件，统一收集在这里，单击即可下载。</p>
-<p>自己编译最后还是出现了一些问题，也找不到解决方法，还是用的编译好的文件直接安装的</p>
-<p><a href="/download/torch-0.4.0a03749c58-cp35-cp35m-linux_armv7l.whl">Python 3.5 Pytorch 0.4.0</a></p>
-<p><a href="/download/torch-1.0.0a08322165-cp35-cp35m-linux_armv7l.whl">Python 3.5 Pytorch 1.0.0</a></p>
-<p><a href="/download/torch-0.4.0a03749c58-cp36-cp36m-linux_armv7l.whl">Python 3.6 Pytorch 0.4.0</a></p>
-<p><strong>参考文章</strong></p>
-<p>手动编译Pytorch遇到了很多问题，在这里参考了以下文章，本文也有部分引用</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57938855">在树莓派上安装PyTorch 1.0</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhouxzh123/article/details/88652312">在树莓派上编译安装pytorch</a></p>
-<p><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html">在</a><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html"> Rasp</a><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html">berryPi</a><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html"> 上编译 PyTorch</a></p>
-<p><a target="_blank" rel="noopener" href="https://wormtooth.com/20180617-pytorch-on-raspberrypi/">Pytorch on RaspberryPi</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/posts/33e1d606/" data-id="ckf58efo300018ou2hrk6618u" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/posts/4a17b156/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
-  
-  
-    <a href="/posts/c991ad4c/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">深度学习下不同参数的意义</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A0%94%E7%A9%B6/">研究</a></li></ul>
+    <div class="post-spread">
+      {% if theme.jiathis %}
+        {% include '_partials/share/jiathis.swig' %}
+      {% elseif theme.baidushare %}
+        {% include '_partials/share/baidushare.swig' %}
+      {% elseif theme.add_this_id %}
+        {% include '_partials/share/add-this.swig' %}
+      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
+        {% include '_partials/share/duoshuo_share.swig' %}
+      {% endif %}
     </div>
   </div>
 
+{% endblock %}
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
-    </div>
-  </div>
+{% block sidebar %}
+  {{ sidebar_template.render(true) }}
+{% endblock %}
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 20px;">机器学习</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/posts/4a17b156/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/posts/33e1d606/">树莓派安装Pytorch踩坑</a>
-          </li>
-        
-          <li>
-            <a href="/posts/c991ad4c/">深度学习下不同参数的意义</a>
-          </li>
-        
-          <li>
-            <a href="/posts/8e50036e/">通过freeze_graph将TensorFlow模型转换为FrozenGraph并进行预测</a>
-          </li>
-        
-          <li>
-            <a href="/posts/4a5480b5/">TensorFlow将已训练模型保存并预测</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-  </div>
-</body>
-</html>
+{% block script_extra %}
+  {% include '_scripts/pages/post-details.swig' %}
+{% endblock %}
