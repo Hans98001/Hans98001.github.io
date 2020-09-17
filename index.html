@@ -1,23 +1,990 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
+<link rel="stylesheet" href="/css/main.css">
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
 
-{% block content %}
-  <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
-  </section>
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/4a17b156/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4a17b156/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-09-15 09:39:57 / Modified: 20:58:55" itemprop="dateCreated datePublished" datetime="2020-09-15T09:39:57+08:00">2020-09-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/33e1d606/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/33e1d606/" class="post-title-link" itemprop="url">树莓派安装Pytorch踩坑</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-09-22 18:15:01" itemprop="dateCreated datePublished" datetime="2019-09-22T18:15:01+08:00">2019-09-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-16 18:17:38" itemprop="dateModified" datetime="2020-09-16T18:17:38+08:00">2020-09-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">研究</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Pytorch不像TensorFlow一样提供了预编译的安装文件，只能麻烦自己来手动编译一下了</p>
+<p><strong>前提条件</strong><br>首先sd最好是16Gb或者32Gb的，然后安装好系统后，对系统进行更新</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt upgrade</span><br><span class="line">sudo apt install vim</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>增加交换区的大小到2G</strong></p>
+<p>树莓派3B+只有1GB的内存容量，在编译PyTorch的过程中可能会爆内存。因此我们需要划分一些SWAP空间出来。其基本原理就是当内存吃紧的时候，用一部分硬盘（对于本文来说就是Micro SD卡）空间来减轻内存的负担。</p>
+<p>首先通过命令打开交换区设置文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/dphys-swapfile</span><br></pre></td></tr></table></figure>
+
+<p>接着找出常量CONF_SWAPSIZE和CONF_MAXSWAP，把后面的默认的100改成2048。<br>然后执行以下命令激活交换文件系统：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /etc/init.d/dphys-swapfile stop</span><br><span class="line">sudo /etc/init.d/dphys-swapfile start</span><br></pre></td></tr></table></figure>
+
+<p>接着安装依赖包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libopenblas-dev cython3 libatlas-dev m4 libblas-dev cmake</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>下载Pytorch源代码</strong><br>这个时候我们可以用git下载源代码了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone --recursive https://github.com/pytorch/pytorch</span><br></pre></td></tr></table></figure>
+
+<p>打开pytorch安装目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd pytorch</span><br></pre></td></tr></table></figure>
+
+<p>切换到我们想安装的版本，例如v1.0.1：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout tags/v1.0.1 -b build</span><br><span class="line">git submodule update --init --recursive</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>设置环境变量</strong><br>这一步非常重要，如果环境变量设置不正确，编译的过程会报错。例如：<br>Failed to run ‘bash tools/build_pytorch_libs.sh –use-cuda –use-nnpack –use mkldnn –use qnnpack caffe2’<br>我们可以利用export命令，设置所需要的环境变量，例如我们把cuda支持去掉，因为树莓派不支持cuda。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">export NO_CUDA=1</span><br><span class="line">export NO_DISTRIBUTED=1</span><br><span class="line">export NO_MKLDNN=1</span><br><span class="line">export NO_NNPACK=1</span><br><span class="line">export NO_QNNPACK=1</span><br></pre></td></tr></table></figure>
+
+<p>树莓派运行内存有限，如果这个值较大，编译的时候会卡死，将编译的jobs数量减小反而会编译得更快</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export MAX_JOBS=2</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>编译Pytorch</strong><br>这个时候我们就可以开始编译Pytorch。<br>如果在日后再次安装或在另一台树莓派上安装时不想花时间再次编译，那么可以先生成一个wheel文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 setup.py bdist_wheel</span><br></pre></td></tr></table></figure>
+
+<p>然后去dist文件夹去安装你生成的wheel文件，其文件名取决于你用了Pytorch的哪个分支</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd dist</span><br><span class="line">pip3 install ./torch-1.0.0a0+8322165-cp35-cp35m-linux_armv7l.whl </span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>下载预编译的安装文件</strong></p>
+<p>这些都是从网上找到的一些预编译的安装文件，统一收集在这里，单击即可下载。</p>
+<p>自己编译最后还是出现了一些问题，也找不到解决方法，还是用的编译好的文件直接安装的</p>
+<p><a href="/download/torch-0.4.0a03749c58-cp35-cp35m-linux_armv7l.whl">Python 3.5 Pytorch 0.4.0</a></p>
+<p><a href="/download/torch-1.0.0a08322165-cp35-cp35m-linux_armv7l.whl">Python 3.5 Pytorch 1.0.0</a></p>
+<p><a href="/download/torch-0.4.0a03749c58-cp36-cp36m-linux_armv7l.whl">Python 3.6 Pytorch 0.4.0</a></p>
+<p><strong>参考文章</strong></p>
+<p>手动编译Pytorch遇到了很多问题，在这里参考了以下文章，本文也有部分引用</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/57938855">在树莓派上安装PyTorch 1.0</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhouxzh123/article/details/88652312">在树莓派上编译安装pytorch</a></p>
+<p><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html">在</a><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html"> Rasp</a><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html">berryPi</a><a target="_blank" rel="noopener" href="https://haoyu.love/blog509.html"> 上编译 PyTorch</a></p>
+<p><a target="_blank" rel="noopener" href="https://wormtooth.com/20180617-pytorch-on-raspberrypi/">Pytorch on RaspberryPi</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/c991ad4c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/c991ad4c/" class="post-title-link" itemprop="url">深度学习下不同参数的意义</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-08-22 18:08:24" itemprop="dateCreated datePublished" datetime="2019-08-22T18:08:24+08:00">2019-08-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-16 18:17:38" itemprop="dateModified" datetime="2020-09-16T18:17:38+08:00">2020-09-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">研究</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近在看代码的时候发现了很多参数决定了算法的运行，数量比较多又容易混淆，就放在这里一起总结一下</p>
+<ul>
+<li>epoch：一个epoch表示过了一遍训练集中的所有样本</li>
+<li>batch_size：一次迭代所使用的样本量</li>
+<li>learning_rate：决定着目标函数能否收敛到局部最小值以及何时收敛到最小值。合适的学习率能够使目标函数在合适的时间内收敛到局部最小值</li>
+<li>dropout_keep_prob：每个元素被保留的概率，1就是所有元素全部保留的意思，一般在大量数据训练时，为了防止过拟合，添加Dropout层，设置一个0~1之间的小数</li>
+<li>training_step：表示一次迭代（也叫iteration），每次迭代更新1次网络结构的参数</li>
+</ul>
+<p><img src="/posts/c991ad4c/epoch.png" alt="epoch"></p>
+<p>​    如定义10000次迭代为1个epoch，若每次迭代的batch-size设为256，那么1个epoch相当于过了2560000个训练样本。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/8e50036e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/8e50036e/" class="post-title-link" itemprop="url">通过freeze_graph将TensorFlow模型转换为FrozenGraph并进行预测</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-08-18 16:31:41" itemprop="dateCreated datePublished" datetime="2019-08-18T16:31:41+08:00">2019-08-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-16 18:05:10" itemprop="dateModified" datetime="2020-09-16T18:05:10+08:00">2020-09-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">研究</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>​        在训练过程中，<code>tf.train.Saver()</code>通常不会将权重数据保存在计算图中，反而是分开保存在checkpoint检查点文件里，当模型初始化时，通过模型文件里的变量Op节点来从checkpoint文件读取数据并初始化变量。这种模型和权重数据分开保存的情况，在产品使用时为了恢复模型需要额外计算，所以便有了freeze_graph.py脚本文件用来将计算图和权重合二为一，减少对边缘设备的性能要求。</p>
+<img src="/posts/8e50036e/ckpt-e1566112139792.jpg" style="zoom:67%;">
+
+<ul>
+<li>checkpoint是检查点文件，文件保存了一个目录下所有的模型文件列表；</li>
+<li>model.ckpt.meta文件保存了TensorFlow计算图的结构，可以理解为神经网络的网络结构，该文件可以被tf.train.import_meta_graph 加载到当前默认的图来使用。</li>
+<li>ckpt.data：保存模型中每个变量的取值</li>
+<li>pb文件能够保存TensorFlow计算图中的操作节点以及对应的各张量，方便我们日后直接调用之前已经训练好的计算图</li>
+</ul>
+<p>​    ckpt检查点文件与pb文件的生成请看<a target="_blank" rel="noopener" href="https://hans98001.github.io/posts/4a5480b5/">TensorFlow将已训练模型保存并预测</a></p>
+<p>​    网上的教程大多使用了Bazel，但是我在尝试的时候遇到了一些困难，后来发现可以使用python，由于每个人TensorFlow安装的位置也不太一样，就可以直接在Pycharm中调用，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.python.tools <span class="keyword">import</span> freeze_graph</span><br><span class="line"></span><br><span class="line">freeze_graph.freeze_graph(input_graph=<span class="string">&#x27;graph.pb&#x27;</span>, <span class="comment"># 要转换的计算图</span></span><br><span class="line">                          input_saver=<span class="string">&quot;&quot;</span>, <span class="comment"># 为空即可</span></span><br><span class="line">                          input_binary=<span class="literal">True</span>, <span class="comment"># 传递pb文件，则为True</span></span><br><span class="line">                          input_checkpoint=<span class="string">&#x27;model4.ckpt-1486&#x27;</span>, <span class="comment"># 输入的权重，不需要最后的后缀</span></span><br><span class="line">                          output_graph=<span class="string">&#x27;freeze_graph.pb&#x27;</span>, <span class="comment"># 输出的冻结图</span></span><br><span class="line">                          output_node_names=<span class="string">&quot;MatMul_2,output_pred&quot;</span>, <span class="comment"># 计算图的输出节点，详见下文</span></span><br><span class="line">                          restore_op_name=<span class="string">&#x27;&#x27;</span>, <span class="comment"># 为空即可</span></span><br><span class="line">                          filename_tensor_name=<span class="string">&#x27;&#x27;</span>, <span class="comment"># 为空即可</span></span><br><span class="line">                          clear_devices=<span class="literal">True</span>, <span class="comment"># 为平台设备的兼容性，清除默认设备</span></span><br><span class="line">                          initializer_nodes=<span class="string">&#x27;&#x27;</span> <span class="comment"># 为空即可)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>input_graph：模型文件，可以是二进制的pb文件，或文本的pbtxt文件，用input_binary来指定区分</li>
+<li>input_saver：TensorFlow Saver file</li>
+<li>input_binary：配合input_graph用，为true时，input_graph格式为.pb，为false时，input_graph格式为.pbtxt</li>
+<li>input_checkpoint：检查点数据文件。训练时，给Saver用于保存权重、偏置等变量值。这时用于模型恢复变量值。</li>
+<li>output_node_names：输出节点的名字，有多个时用逗号分开。用于指定输出节点，将没有在输出线上的其它节点剔除。</li>
+<li>restore_op_name：已弃用</li>
+<li>filename_tensor_name：已弃用</li>
+<li>output_graph：用来保存整合后的模型输出文件。</li>
+<li>clear_devices：指定是否清除训练时节点指定的运算设备（如cpu、gpu、tpu。cpu是默认）</li>
+<li>initializer_nodes：权限加载后，可通过此参数来指定需要初始化的节点，用逗号分隔多个节点名字。</li>
+</ul>
+<ol>
+<li>若计算图的输出节点训练时已经在placeholder中添加name参数，则易于确定输出节点的名字</li>
+<li>若未添加name参数，则可以通过TensorBoard确定输出节点，TensorBoard可通过<code>tensorboard --logdir=C:\Users\logs</code>运行，其中，logs文件夹内包含日志文件（日志文件由<code>wirter = tf.summary.FileWriter(&#39;logs/&#39;,ss.graph)</code>语句产生）</li>
+</ol>
+<p><img src="/posts/8e50036e/tensorboard.png" alt="tensorboard"></p>
+<p>​    在生成Frozen_Graph后，便可以通过pb文件直接加载模型，无需额外计算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span>():</span></span><br><span class="line">    <span class="keyword">with</span> tf.Session(graph=graph) <span class="keyword">as</span> sess:</span><br><span class="line">        sess.run(tf.global_variables_initializer())</span><br><span class="line">        <span class="comment"># 定义输入的张量名称,对应网络结构的输入张量</span></span><br><span class="line">        <span class="comment"># input:0作为输入图像,keep_prob:0作为dropout的参数,测试时值为1,is_training:0训练参数</span></span><br><span class="line">        input_data_tensor = sess.graph.get_tensor_by_name(<span class="string">&quot;IteratorGetNext:0&quot;</span>)</span><br><span class="line">        input_keep_prob_tensor = sess.graph.get_tensor_by_name(<span class="string">&quot;input_keep_prob:0&quot;</span>)</span><br><span class="line">        input_is_training_tensor = sess.graph.get_tensor_by_name(<span class="string">&quot;input_Y:0&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 定义输出的张量名称</span></span><br><span class="line">        output_ylogits_tensor = sess.graph.get_tensor_by_name(<span class="string">&quot;MatMul_2:0&quot;</span>)</span><br><span class="line">        output_pred_tensor = sess.graph.get_tensor_by_name(<span class="string">&quot;output_pred:0&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 定义输出的存储名称</span></span><br><span class="line">        y_pred = np.empty((testdata.shape[<span class="number">0</span>], FLAGS.num_classes), dtype=np.float32)</span><br><span class="line">        y_test = np.empty((testdata.shape[<span class="number">0</span>], FLAGS.num_classes), dtype=np.float32)</span><br><span class="line">        </span><br><span class="line">        array = []  <span class="comment"># 转为整型列表</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(testdata.shape[<span class="number">0</span>]):</span><br><span class="line">            y_pred[i, :], y_test[i, :] = sess.run([output_pred_tensor, output_ylogits_tensor],</span><br><span class="line">                                                  feed_dict=&#123;input_data_tensor: testdata[i][np.newaxis, :], </span><br><span class="line">                                                             input_keep_prob_tensor: <span class="number">1</span>, </span><br><span class="line">                                                             input_is_training_tensor: <span class="literal">False</span>&#125;)</span><br><span class="line">            array.append(int(y_pred[i, <span class="number">0</span>]))</span><br><span class="line">        print(y_pred)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/4a5480b5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4a5480b5/" class="post-title-link" itemprop="url">TensorFlow将已训练模型保存并预测</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-08-17 16:07:01" itemprop="dateCreated datePublished" datetime="2019-08-17T16:07:01+08:00">2019-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-16 18:35:11" itemprop="dateModified" datetime="2020-09-16T18:35:11+08:00">2020-09-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">研究</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>第一次接触机器学习，训练和测试网上都有大把的教程，但是当我需要使用模型进行预测的时候，却遇到了一些麻烦，在这里就把自己的一部分总结写下来。<strong>注意这里是将训练好的神经网络拿出来进行预测（使用），而不是测试，测试可与训练在一个文件中进行，当然也可像这样载入网络和训练数据来测试。</strong></p>
+<p>​    一般来说，TensorFlow对数据集的训练和测试都会同时进行，但是在实际中使用的时候，受限于实际使用算法的机器性能，我们不会重复进行训练，而是将TensorFlow在高性能平台训练后的模型保存下来，只在边缘设备上加载模型并进行预测，大大减少了对机器性能的需求。</p>
+<p>​    在完成培训之后，我们希望将所有的变量和网络结构保存到一个文件中，以便将来使用。因此，在Tensorflow中，我们希望保存所有参数的图和值，我们将创建一个tf.train.Saver()类的实例。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">tf.flags.DEFINE_integer(<span class="string">&#x27;num_epoch&#x27;</span>, <span class="number">1500</span>, <span class="string">&#x27;The number of epoches for training.&#x27;</span>)</span><br><span class="line">tf.flags.DEFINE_string(<span class="string">&#x27;checkpoint&#x27;</span>, <span class="string">&#x27;./checkpoint/&#x27;</span>, <span class="string">&#x27;the checkpoint dir&#x27;</span>)</span><br><span class="line">tf.flags.DEFINE_string(<span class="string">&#x27;model_name&#x27;</span>, <span class="string">&#x27;model4.ckpt&#x27;</span>, <span class="string">&#x27;model name&#x27;</span>)</span><br><span class="line">FLAGS = tf.flags.FLAGS</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train</span>():</span> </span><br><span class="line">    ······ </span><br><span class="line">    saver = tf.train.Saver(tf.global_variables()) <span class="comment"># 实例化 saver 对象 </span></span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess: </span><br><span class="line">        ckpt = tf.train.get_checkpoint_state(FLAGS.checkpoint) </span><br><span class="line">        <span class="keyword">if</span> ckpt <span class="keyword">and</span> ckpt.model_checkpoint_path: </span><br><span class="line">            saver.restore(sess, ckpt.model_checkpoint_path) </span><br><span class="line">            global_step = ckpt.model_checkpoint_path.split(<span class="string">&#x27;/&#x27;</span>)[<span class="number">-1</span>].split(<span class="string">&#x27;-&#x27;</span>)[<span class="number">-1</span>] </span><br><span class="line">            ······</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(FLAGS.num_epoch): </span><br><span class="line">                ······ </span><br><span class="line">                <span class="comment"># 对模型的每一次迭代，都保存到ckpt文件中 </span></span><br><span class="line">                saver.save(sess, os.path.join(FLAGS.checkpoint, FLAGS.model_name), global_step=i + <span class="number">1</span>) </span><br><span class="line">                <span class="comment"># 保存计算图，如果需要无须再次训练 </span></span><br><span class="line">                tf.train.write_graph(sess.graph.as_graph_def(), FLAGS.checkpoint, <span class="string">&#x27;graph.pb&#x27;</span>, as_text=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在使用模型进行预测时，将模型恢复，通过<code>feed_dict=&#123;······&#125;</code>传递输入参数，参数列表为训练时添加的<code>tf.placeholder</code>等。执行完毕后，通过<code>pred = tf.argmax(Ylogits, 1)</code>函数得到最终分类结果。</p>
+<p>注：训练时在输入输出参数时的placeholder()最好增加name参数，为节点命名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span>():</span> </span><br><span class="line">    ······ </span><br><span class="line">    saver = tf.train.Saver(tf.global_variables()) <span class="comment"># 实例化 saver 对象</span></span><br><span class="line">    <span class="comment"># 预测, Ylogits为模型计算图函数</span></span><br><span class="line">    pred = tf.argmax(Ylogits, <span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">        ckpt = tf.train.get_checkpoint_state(FLAGS.checkpoint)</span><br><span class="line">        <span class="comment"># 加载指定路径下的ckpt, 若模型存在, 则加载模型到当前对话</span></span><br><span class="line">        <span class="keyword">if</span> ckpt <span class="keyword">and</span> ckpt.model_checkpoint_path:</span><br><span class="line">            saver.restore(sess, ckpt.model_checkpoint_path)</span><br><span class="line">        ······</span><br><span class="line">        y_pred = np.empty((testdata.shape[<span class="number">0</span>], FLAGS.num_classes), dtype=np.float32)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(testdata.shape[<span class="number">0</span>]):</span><br><span class="line">            y_pred[i, :] = sess.run(pred, feed_dict=&#123;······&#125;)</span><br><span class="line">        print(y_pred)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/acfa3dd9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/acfa3dd9/" class="post-title-link" itemprop="url">如何解释关系数据库的范式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2019-08-16 18:15:32" itemprop="dateCreated datePublished" datetime="2019-08-16T18:15:32+08:00">2019-08-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-09-16 16:56:30" itemprop="dateModified" datetime="2020-09-16T16:56:30+08:00">2020-09-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>首先要明白”范式（NF）”是什么意思。按照教材中的定义，范式是“符合某一种级别的关系模式的集合，表示一个关系内部各属性之间的联系的合理化程度”。很晦涩吧？实际上你可以把它粗略地理解为<strong>一张数据表的表结构所符合的某种设计标准的级别</strong>。就像家里装修买建材，最环保的是E0级，其次是E1级，还有E2级等等。数据库范式也分为1NF，2NF，3NF，BCNF，4NF，5NF。一般在我们设计关系型数据库的时候，最多考虑到BCNF就够。符合高一级范式的设计，必定符合低一级范式，例如符合2NF的关系模式，必定符合1NF。</p>
+<h2 id="第一范式（1NF）"><a href="#第一范式（1NF）" class="headerlink" title="第一范式（1NF）"></a>第一范式（1NF）</h2><p>接下来就对每一级范式进行一下解释，首先是<strong>第一范式（1NF）</strong></p>
+<p>符合1NF的关系（你可以理解为数据表。“关系模式”和“关系”的区别，类似于面向对象程序设计中”类“与”对象“的区别。”关系“是”关系模式“的一个实例，你可以把”关系”理解为一张带数据的表，而“关系模式”是这张数据表的表结构。<strong>1NF的定义为：符合1NF的关系中的每个属性都不可再分。表1</strong>所示的情况，就不符合1NF的要求。</p>
+<img src="/posts/acfa3dd9/db-01.jpg" alt="图1" style="zoom:80%;">
+
+<p>实际上，<strong>1NF是所有关系型数据库的最基本要求</strong>，你在关系型数据库管理系统（RDBMS），例如SQL Server，Oracle，MySQL中创建数据表的时候，如果数据表的设计不符合这个最基本的要求，那么操作一定是不能成功的。也就是说，只要在RDBMS中已经存在的数据表，一定是符合1NF的。如果我们要在RDBMS中表现表中的数据，就得设计为<strong>表2</strong>的形式：</p>
+<img src="/posts/acfa3dd9/db-02.jpg" alt="表2" style="zoom:80%;">
+
+<p>但是仅仅符合1NF的设计，仍然会存在数据冗余过大，插入异常，删除异常，修改异常的问题，例如对于<strong>表3</strong>中的设计：</p>
+<img src="/posts/acfa3dd9/db-03.jpg" alt="表3" style="zoom:80%;">
+
+<ol>
+<li>每一名学生的学号、姓名、系名、系主任这些数据重复多次。每个系与对应的系主任的数据也重复多次——<strong>数据冗余过大</strong></li>
+<li>假如学校新建了一个系，但是暂时还没有招收任何学生（比如3月份就新建了，但要等到8月份才招生），那么是无法将系名与系主任的数据单独地添加到数据表中去的 （注１）——<strong>插入异常</strong><br>注１：根据三种关系完整性约束中实体完整性的要求，关系中的码（注２）所包含的任意一个属性都不能为空，所有属性的组合也不能重复。为了满足此要求，图中的表，只能将学号与课名的组合作为码，否则就无法唯一地区分每一条记录。<br>注２：<strong>码：关系中的某个属性或者某几个属性的组合，用于区分每个元组</strong>（可以把“元组”理解为一张表中的每条记录，也就是每一行）<strong>。</strong></li>
+<li>假如将某个系中所有学生相关的记录都删除，那么所有系与系主任的数据也就随之消失了（一个系所有学生都没有了，并不表示这个系就没有了）。——<strong>删除异常</strong></li>
+<li>假如李小明转系到法律系，那么为了保证数据库中数据的一致性，需要修改三条记录中系与系主任的数据。——<strong>修改异常</strong>。</li>
+</ol>
+<p>正因为仅符合1NF的数据库设计存在着这样那样的问题，我们需要提高设计标准，去掉导致上述四种问题的因素，使其符合更高一级的范式（2NF），这就是所谓的“规范化”。</p>
+<h2 id="第二范式（2NF）"><a href="#第二范式（2NF）" class="headerlink" title="第二范式（2NF）"></a>第二范式（2NF）</h2><p><strong>第二范式（2NF）</strong>在关系理论中的严格定义我这里就不多介绍了（因为涉及到的铺垫比较多），只需要了解2NF对1NF进行了哪些改进即可。其改进是，<strong>2NF在1NF的基础之上，消除了非主属性对于码的部分函数依赖</strong>。接下来对这句话中涉及到的四个概念——<strong>“函数依赖”</strong>、<strong>“码”</strong>、<strong>“非主属性”</strong>、与<strong>“部分函数依赖”</strong>进行一下解释。</p>
+<p><strong>函数依赖</strong><br>我们可以这么理解（但并不是特别严格的定义）：<strong>若在一张表中，在属性（或属性组）X的值确定的情况下，必定能确定属性Y的值，那么就可以说Y函数依赖于X，写作 X → Y</strong>。也就是说，在数据表中，不存在任意两条记录，它们在X属性（或属性组）上的值相同，而在Y属性上的值不同。这也就是“函数依赖”名字的由来，类似于函数关系 y = f(x)，在x的值确定的情况下，y的值一定是确定的。</p>
+<p>例如，对于表3中的数据，找不到任何一条记录，它们的学号相同而对应的姓名不同。所以我们可以说<strong>姓名函数依赖于学号</strong>，写作 <strong>学号 → 姓名</strong>。但是反过来，因为可能出现同名的学生，所以有可能不同的两条学生记录，它们在姓名上的值相同，但对应的学号不同，所以我们不能说学号函数依赖于姓名。表中其他的函数依赖关系还有如：</p>
+<ul>
+<li>系名 → 系主任</li>
+<li>学号 → 系主任</li>
+<li>（学号，课名） → 分数</li>
+</ul>
+<p>但以下函数依赖关系则不成立：</p>
+<ul>
+<li>学号 → 课名</li>
+<li>学号 → 分数</li>
+<li>课名 → 系主任</li>
+<li>（学号，课名） → 姓名</li>
+</ul>
+<p>从“函数依赖”这个概念展开，还会有三个概念：</p>
+<p><strong>完全函数依赖</strong></p>
+<p>在一张表中，若 X → Y，且对于 X 的任何一个真子集（假如属性组 X 包含超过一个属性的话），X ‘ → Y 不成立，那么我们称 Y 对于 X <strong>完全函数依赖</strong>，记作 X F→ Y。（那个F应该写在箭头的正上方，正确的写法如<strong>图1</strong>）</p>
+<p><img src="/posts/acfa3dd9/db-04.jpg" alt="图1"></p>
+<p>例如：</p>
+<ul>
+<li>学号 F→ 姓名</li>
+<li>（学号，课名） F→ 分数 （注：因为同一个的学号对应的分数不确定，同一个课名对应的分数也不确定）</li>
+</ul>
+<p><strong>部分函数依赖</strong></p>
+<p>假如 Y 函数依赖于 X，但同时 Y 并不完全函数依赖于 X，那么我们就称 Y 部分函数依赖于 X，记作 X P→ Y，如<strong>图2</strong>。</p>
+<p><img src="/posts/acfa3dd9/db-05.jpg" alt="图2"></p>
+<p>例如：</p>
+<ul>
+<li>（学号，课名） P→ 姓名</li>
+</ul>
+<p><strong>传递函数依赖</strong><br>假如 Z 函数依赖于 Y， Y 不包含于 X，且 X 不函数依赖于 Y，那么我们就称 Z 传递函数依赖于 X ，记作 X T→ Z，如<strong>图3</strong>。</p>
+<p><img src="/posts/acfa3dd9/db-06.jpg" alt="图3"></p>
+<p><strong>码</strong><br>设 K 为某表中的一个属性或属性组，若除 K 之外的所有属性都完全函数依赖于 K（这个“完全”不要漏了），那么我们称 K 为<strong>候选码</strong>，简称为<strong>码</strong>。在实际中我们通常可以理解为：<strong>假如当 K 确定的情况下，该表除 K 之外的所有属性的值也就随之确定，那么 K 就是码。</strong>一张表中可以有超过一个码。（实际应用中为了方便，通常选择其中的一个码作为<strong>主码</strong>）</p>
+<p>例如：<br>对于表3，<strong>（学号、课名）</strong>这个属性组就是码。该表中有且仅有这一个码。（假设所有课没有重名的情况）</p>
+<p><strong>非主属性</strong><br>包含在任何一个码中的属性成为主属性。</p>
+<p>例如：<br>对于表3，主属性就有两个，<strong>学号</strong> 与 <strong>课名</strong>。</p>
+<p>终于可以回过来看2NF了。首先，我们需要判断，表3是否符合2NF的要求？根据2NF的定义，判断的依据实际上就是看数据表中<strong>是否存在非主属性对于码的部分函数依赖</strong>。若存在，则数据表最高只符合1NF的要求，若不存在，则符合2NF的要求。判断的方法是：</p>
+<p>第一步：找出数据表中所有的<strong>码</strong>。<br>第二步：根据第一步所得到的码，找出所有的<strong>主属性</strong>。<br>第三步：数据表中，除去所有的主属性，剩下的就都是<strong>非主属性</strong>了。<br>第四步：查看是否存在非主属性对码的<strong>部分函数依赖</strong>。</p>
+<p>对于表3，根据前面所说的四步，我们可以这么做：</p>
+<p>第一步：</p>
+<ol>
+<li>查看所有每一单个属性，当它的值确定了，是否剩下的所有属性值都能确定。</li>
+<li>查看所有包含有两个属性的属性组，当它的值确定了，是否剩下的所有属性值都能确定。</li>
+<li>……</li>
+<li>查看所有包含了六个属性，也就是所有属性的属性组，当它的值确定了，是否剩下的所有属性值都能确定。</li>
+</ol>
+<p>看起来很麻烦是吧，但是这里有一个诀窍，就是假如A是码，那么所有包含了A的属性组，如（A，B）、（A，C）、（A，B，C）等等，都不是码了（因为作为码的要求里有一个“<strong>完全</strong>函数依赖”）。</p>
+<p><strong>图4</strong>表示了表中所有的函数依赖关系：</p>
+<img src="/posts/acfa3dd9/db-07.jpg" alt="图4" style="zoom:67%;">
+
+<p>这一步完成以后，可以得到，表3的码只有一个，就是<strong>（学号、课名）</strong>。</p>
+<p>第二步：<br>主属性有两个：<strong>学号</strong> 与 <strong>课名</strong></p>
+<p>第三步：<br>非主属性有四个：<strong>姓名</strong>、<strong>系名</strong>、<strong>系主任</strong>、<strong>分数</strong></p>
+<p><strong>第四步：</strong><br>对于<strong>（学号，课名） → 姓名</strong>，有 <strong>学号 → 姓名</strong>，存在非主属性 <strong>姓名</strong> 对码<strong>（学号，课名）</strong>的部分函数依赖。<br>对于<strong>（学号，课名） → 系名</strong>，有 <strong>学号 → 系名</strong>，存在非主属性 系<strong>名</strong> 对码<strong>（学号，课名）</strong>的部分函数依赖。<br>对于<strong>（学号，课名） → 系主任</strong>，有 <strong>学号 → 系主任</strong>，存在非主属性 对码<strong>（学号，课名）</strong>的部分函数依赖。</p>
+<p>所以表3存在非主属性对于码的部分函数依赖，最高只符合1NF的要求，不符合2NF的要求。</p>
+<p>为了让表3符合2NF的要求，我们必须消除这些部分函数依赖，只有一个办法，就是将大数据表拆分成两个或者更多个更小的数据表，在拆分的过程中，要达到更高一级范式的要求，这个过程叫做”模式分解“。模式分解的方法不是唯一的，以下是其中一种方法：<br>选课（学号，课名，分数）</p>
+<p>学生（学号，姓名，系名，系主任）</p>
+<p>我们先来判断以下，<strong>选课</strong>表与<strong>学生</strong>表，是否符合了2NF的要求？</p>
+<p>对于<strong>选课</strong>表，其码是<strong>（学号，课名）</strong>，主属性是<strong>学号</strong>和<strong>课名</strong>，非主属性是<strong>分数</strong>，<strong>学号</strong>确定，并不能唯一确定<strong>分数</strong>，<strong>课名</strong>确定，也不能唯一确定<strong>分数</strong>，所以不存在非主属性<strong>分数</strong>对于码 <strong>（学号，课名）</strong>的部分函数依赖，所以此表符合2NF的要求。</p>
+<p>对于<strong>学生</strong>表，其码是<strong>学号，</strong>主属性是<strong>学号</strong>，非主属性是<strong>姓名、系名</strong>和<strong>系主任</strong>，因为码只有一个属性，所以不可能存在非主属性对于码 的部分函数依赖，所以此表符合2NF的要求。</p>
+<p><strong>图5</strong>表示了模式分解以后的新的函数依赖关系</p>
+<img src="/posts/acfa3dd9/db-08.jpg" alt="图5" style="zoom:50%;">
+
+<p>表4表示了模式分解以后新的数据</p>
+<p><img src="/posts/acfa3dd9/db-09.jpg" alt="表4"></p>
+<p>现在我们来看一下，进行同样的操作，是否还存在着之前的那些问题？</p>
+<ol>
+<li>李小明转系到法律系<br>只需要修改一次李小明对应的系的值即可。——有改进</li>
+<li>数据冗余是否减少了？<br>学生的姓名、系名与系主任，不再像之前一样重复那么多次了。——有改进</li>
+<li>删除某个系中所有的学生记录<br>该系的信息仍然全部丢失。——无改进</li>
+<li>插入一个尚无学生的新系的信息。<br>因为学生表的码是学号，不能为空，所以此操作不被允许。——无改进</li>
+</ol>
+<p>所以说，仅仅符合2NF的要求，很多情况下还是不够的，而出现问题的原因，在于仍然存在非主属性<strong>系主任</strong>对于码<strong>学号</strong>的传递函数依赖。为了能进一步解决这些问题，我们还需要将符合2NF要求的数据表改进为符合3NF的要求。</p>
+<h2 id="第三范式（3NF）"><a href="#第三范式（3NF）" class="headerlink" title="第三范式（3NF）"></a>第三范式（3NF）</h2><p><strong>第三范式（3NF）</strong> <strong>3NF在2NF的基础之上，消除了非主属性对于码的传递函数依赖</strong>。也就是说， 如果存在非主属性对于码的传递函数依赖，则不符合3NF的要求。</p>
+<p>接下来我们看看表4中的设计，是否符合3NF的要求。</p>
+<p>对于<strong>选课</strong>表，主码为（学号，课名），主属性为<strong>学号</strong>和<strong>课名，</strong>非主属性只有一个，为分数，不可能存在传递函数依赖，所以<strong>选课</strong>表的设计，符合3NF的要求。</p>
+<p>对于<strong>学生</strong>表，主码为<strong>学号</strong>，主属性为<strong>学号</strong>，非主属性为<strong>姓名</strong>、<strong>系名</strong>和<strong>系主任</strong>。因为 学号 → 系名，同时 系名 → 系主任，所以存在非主属性<strong>系主任</strong>对于码<strong>学号</strong>的传递函数依赖，所以<strong>学生</strong>表的设计，不符合3NF的要求。。</p>
+<p>为了让数据表设计达到3NF，我们必须进一步进行模式分解为以下形式：<br>选课（学号，课名，分数）<br>学生（学号，姓名，系名）<br>系（系名，系主任）</p>
+<p>对于<strong>选课</strong>表，符合3NF的要求，之前已经分析过了。</p>
+<p>对于<strong>学生</strong>表，码为<strong>学号</strong>，主属性为<strong>学号</strong>，非主属性为<strong>系名</strong>，不可能存在非主属性对于码的传递函数依赖，所以符合3NF的要求。</p>
+<p>对于<strong>系</strong>表，码为<strong>系名</strong>，主属性为<strong>系名</strong>，非主属性为<strong>系主任</strong>，不可能存在非主属性对于码的传递函数依赖（至少要有三个属性才可能存在传递函数依赖关系），所以符合3NF的要求。。</p>
+<p>新的函数依赖关系如图6</p>
+<img src="/posts/acfa3dd9/db-10.jpg" alt="图6" style="zoom:50%;">
+
+<p>新的数据表如表5</p>
+<img src="/posts/acfa3dd9/db-11.jpg" alt="表5" style="zoom:80%;">
+
+<p>现在我们来看一下，进行同样的操作，是否还存在着之前的那些问题？</p>
+<ol>
+<li>删除某个系中所有的学生记录<br>该系的信息不会丢失。——有改进</li>
+<li>插入一个尚无学生的新系的信息。<br>因为系表与学生表目前是独立的两张表，所以不影响。——有改进</li>
+<li>数据冗余更加少了。——有改进</li>
+</ol>
+<p><strong>结论</strong><br>由此可见，符合3NF要求的数据库设计，<strong>基本</strong>上解决了数据冗余过大，插入异常，修改异常，删除异常的问题。当然，在实际中，往往为了性能上或者应对扩展的需要，经常 做到2NF或者1NF，但是作为数据库设计人员，至少应该知道，3NF的要求是怎样的。</p>
+<h2 id="BCNF范式"><a href="#BCNF范式" class="headerlink" title="BCNF范式"></a>BCNF范式</h2><p>要了解 BCNF 范式，那么先看这样一个问题：</p>
+<p>若：</p>
+<ol>
+<li>某公司有若干个仓库；</li>
+<li>每个仓库只能有一名管理员，一名管理员只能在一个仓库中工作；</li>
+<li>一个仓库中可以存放多种物品，一种物品也可以存放在不同的仓库中。每种物品在每个仓库中都有对应的数量。</li>
+</ol>
+<p>那么关系模式 仓库（仓库名，管理员，物品名，数量） 属于哪一级范式？</p>
+<p>答：已知函数依赖集：仓库名 → 管理员，管理员 → 仓库名，（仓库名，物品名）→ 数量<br>码：（管理员，物品名），（仓库名，物品名）<br>主属性：仓库名、管理员、物品名<br>非主属性：数量<br>∵ 不存在非主属性对码的部分函数依赖和传递函数依赖。∴ 此关系模式属于3NF。</p>
+<p>基于此关系模式的关系（具体的数据）可能如图所示：</p>
+<img src="/posts/acfa3dd9/db-12.jpg" alt="表6" style="zoom:50%;">
+
+<p>好，既然此关系模式已经属于了 3NF，那么这个关系模式是否存在问题呢？我们来看以下几种操作：</p>
+<ol>
+<li>先新增加一个仓库，但尚未存放任何物品，是否可以为该仓库指派管理员？——不可以，因为物品名也是主属性，根据实体完整性的要求，主属性不能为空。</li>
+<li>某仓库被清空后，需要删除所有与这个仓库相关的物品存放记录，会带来什么问题？——仓库本身与管理员的信息也被随之删除了。</li>
+<li>如果某仓库更换了管理员，会带来什么问题？——这个仓库有几条物品存放记录，就要修改多少次管理员信息。</li>
+</ol>
+<p>从这里我们可以得出结论，在某些特殊情况下，即使关系模式符合 3NF 的要求，仍然存在着插入异常，修改异常与删除异常的问题，仍然不是 ”好“ 的设计。</p>
+<p>造成此问题的原因：存在着<strong>主属性</strong>对于码的部分函数依赖与传递函数依赖。（在此例中就是存在主属性【仓库名】对于码【（管理员，物品名）】的部分函数依赖。</p>
+<p>解决办法就是要在 3NF 的基础上消除<strong>主属性</strong>对于码的部分与传递函数依赖。</p>
+<p>仓库（仓库名，管理员）<br>库存（仓库名，物品名，数量）</p>
+<p>这样，之前的插入异常，修改异常与删除异常的问题就被解决了。</p>
+<p>作者：刘慰<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/24696366/answer/29189700">https://www.zhihu.com/question/24696366/answer/29189700</a><br>来源：知乎</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">John Doe</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
