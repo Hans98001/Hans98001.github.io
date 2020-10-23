@@ -20,30 +20,55 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="May the Force be with you">
-<meta property="og:type" content="website">
-<meta property="og:title" content="May the Force be with you">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Java SEJava集合类总体分析   功能描述 Map Set List    添加对象 put() add() add(index,element)   移除对象 remove(key) remove() remove(index&#x2F;element)   判断是否为空 isEmpty() isEmpty() isEmpty()   返回元素个数 size() size() size()   获">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java">
+<meta property="og:url" content="http://example.com/posts/df2849ec/index.html">
 <meta property="og:site_name" content="May the Force be with you">
-<meta property="og:description" content="May the Force be with you">
+<meta property="og:description" content="Java SEJava集合类总体分析   功能描述 Map Set List    添加对象 put() add() add(index,element)   移除对象 remove(key) remove() remove(index&#x2F;element)   判断是否为空 isEmpty() isEmpty() isEmpty()   返回元素个数 size() size() size()   获">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/posts/df2849ec/timg.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-c68248bb5d9b4d64d22600571e996446_hd-1603466619082.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-e64bf72c5c04412f626b21753aa9e1a1_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-ee924f8693cff51785ad6637ac5b21c1_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-8ec294de7d0f9013788e3fb5c76069ef_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-64e8b19eeb70d9cf87c27fe4c5c0fc81_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-82e0c12a1b26f7979ed9241e169affda_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-c920a0540ce0651003a5326f6ef9891d_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-99ad2cd809fcb86dd791ff7f65fb1779_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-861683acac47577c81f2b7493dd05649_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-c845802f9187953ed576e0555f76da42_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-555b2be7d76e78511a6d6fed3304927f_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-24a96669241e81439c636e83976ba152_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/v2-5ca61395f37cef73c7bbe7808f9ea219_hd.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/640.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/2.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/3.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/4.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/5.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/6.jpg">
+<meta property="og:image" content="http://example.com/posts/df2849ec/7.jpg">
+<meta property="article:published_time" content="2020-09-19T04:11:32.000Z">
+<meta property="article:modified_time" content="2020-10-23T15:25:59.079Z">
 <meta property="article:author" content="Tianyi Han">
+<meta property="article:tag" content="基础知识">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/posts/df2849ec/timg.jpg">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/posts/df2849ec/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>May the Force be with you</title>
+  <title>Java | May the Force be with you</title>
   
 
 
@@ -165,136 +190,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/24d07237/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/upload/header.jpg">
-      <meta itemprop="name" content="Tianyi Han">
-      <meta itemprop="description" content="May the Force be with you">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="May the Force be with you">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/24d07237/" class="post-title-link" itemprop="url">git和svn对比</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-10-23 23:30:00 / 修改时间：23:31:05" itemprop="dateCreated datePublished" datetime="2020-10-23T23:30:00+08:00">2020-10-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>实习的时候恰好遇到从svn向git迁移，两个正好一起用过就总结一下两种的区别。</p>
-<p>SVN和Git最大的区别是SVN是集中式的，必须联网才能工作，而Git是分布式的且支持离线工作。</p>
-<p>Git的核心概念是工作流：</p>
-<ul>
-<li>工作区(Workspace)是电脑中实际的目录。</li>
-<li>暂存区(Index)类似于缓存区域，临时保存你的改动。</li>
-<li>仓库区(Repository)，分为本地仓库和远程仓库。</li>
-</ul>
-<p>Git提交代码的流程：</p>
-<ol>
-<li><code>git add</code> 从工作区提交到暂存区</li>
-<li><code>git commit</code> 从暂存区提交到本地仓库</li>
-<li><code>git push</code> 从本地仓库提交到远程仓库</li>
-</ol>
-<p><img src="/posts/24d07237/6l06iyluxp.jpg" alt="Git命令流程"></p>
-<p>下表是svn和git命令对比。</p>
-<table>
-<thead>
-<tr>
-<th>功能</th>
-<th>svn</th>
-<th>git</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>工作区更新</td>
-<td>svn up(date)</td>
-<td>git pull</td>
-</tr>
-<tr>
-<td>添加文件</td>
-<td>svn add <path></path></td>
-<td>git add <path></path></td>
-</tr>
-<tr>
-<td>删除文件</td>
-<td>svn rm <path></path></td>
-<td>git rm <path></path></td>
-</tr>
-<tr>
-<td>查看工作区状态</td>
-<td>svn status</td>
-<td>git status</td>
-</tr>
-<tr>
-<td>提交</td>
-<td>svn commit -m “msg”</td>
-<td>git commit -m “msg”/git push</td>
-</tr>
-<tr>
-<td>工作区差异比较</td>
-<td>svn diff</td>
-<td>git diff (HEAD)</td>
-</tr>
-<tr>
-<td>显示提交日志</td>
-<td>svn log</td>
-<td>git log</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -310,10 +209,9 @@
       <meta itemprop="name" content="May the Force be with you">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/df2849ec/" class="post-title-link" itemprop="url">Java</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Java
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -352,7 +250,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Java-SE"><a href="#Java-SE" class="headerlink" title="Java SE"></a>Java SE</h1><h2 id="Java集合类"><a href="#Java集合类" class="headerlink" title="Java集合类"></a>Java集合类</h2><h3 id="总体分析"><a href="#总体分析" class="headerlink" title="总体分析"></a>总体分析</h3><table>
+        <h1 id="Java-SE"><a href="#Java-SE" class="headerlink" title="Java SE"></a>Java SE</h1><h2 id="Java集合类"><a href="#Java集合类" class="headerlink" title="Java集合类"></a>Java集合类</h2><h3 id="总体分析"><a href="#总体分析" class="headerlink" title="总体分析"></a>总体分析</h3><table>
 <thead>
 <tr>
 <th align="center">功能描述</th>
@@ -628,497 +526,36 @@
 <p><strong>切</strong> ：指的是横切逻辑，原有业务逻辑代码不动，只能操作横切逻辑代码，所以面向横切逻辑</p>
 <p><strong>面</strong> ：横切逻辑代码往往要影响的是很多个方法，每个方法如同一个点，多个点构成一个面。这里有一个面的概念</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># 基础知识</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/4a17b156/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/upload/header.jpg">
-      <meta itemprop="name" content="Tianyi Han">
-      <meta itemprop="description" content="May the Force be with you">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="May the Force be with you">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/4a17b156/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-15 09:39:57 / 修改时间：20:58:55" itemprop="dateCreated datePublished" datetime="2020-09-15T09:39:57+08:00">2020-09-15</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/33e1d606/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/upload/header.jpg">
-      <meta itemprop="name" content="Tianyi Han">
-      <meta itemprop="description" content="May the Force be with you">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="May the Force be with you">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/33e1d606/" class="post-title-link" itemprop="url">树莓派安装Pytorch踩坑</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-22 18:15:01" itemprop="dateCreated datePublished" datetime="2019-09-22T18:15:01+08:00">2019-09-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-18 17:35:40" itemprop="dateModified" datetime="2020-09-18T17:35:40+08:00">2020-09-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">研究</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Pytorch不像TensorFlow一样提供了预编译的安装文件，只能麻烦自己来手动编译一下了</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/33e1d606/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/c991ad4c/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/upload/header.jpg">
-      <meta itemprop="name" content="Tianyi Han">
-      <meta itemprop="description" content="May the Force be with you">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="May the Force be with you">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/c991ad4c/" class="post-title-link" itemprop="url">深度学习下不同参数的意义</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-22 18:08:24" itemprop="dateCreated datePublished" datetime="2019-08-22T18:08:24+08:00">2019-08-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-18 17:35:36" itemprop="dateModified" datetime="2020-09-18T17:35:36+08:00">2020-09-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">研究</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>最近在看代码的时候发现了很多参数决定了算法的运行，数量比较多又容易混淆，就放在这里一起总结一下</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/c991ad4c/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/posts/4a17b156/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/posts/24d07237/" rel="next" title="git和svn对比">
+      git和svn对比 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/8e50036e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/upload/header.jpg">
-      <meta itemprop="name" content="Tianyi Han">
-      <meta itemprop="description" content="May the Force be with you">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="May the Force be with you">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/8e50036e/" class="post-title-link" itemprop="url">通过freeze_graph将TensorFlow模型转换为FrozenGraph并进行预测</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-18 16:31:41" itemprop="dateCreated datePublished" datetime="2019-08-18T16:31:41+08:00">2019-08-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-18 17:35:52" itemprop="dateModified" datetime="2020-09-18T17:35:52+08:00">2020-09-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">研究</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>​        在训练过程中，<code>tf.train.Saver()</code>通常不会将权重数据保存在计算图中，反而是分开保存在checkpoint检查点文件里，当模型初始化时，通过模型文件里的变量Op节点来从checkpoint文件读取数据并初始化变量。这种模型和权重数据分开保存的情况，在产品使用时为了恢复模型需要额外计算，所以便有了freeze_graph.py脚本文件用来将计算图和权重合二为一，减少对边缘设备的性能要求。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/8e50036e/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/4a5480b5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/upload/header.jpg">
-      <meta itemprop="name" content="Tianyi Han">
-      <meta itemprop="description" content="May the Force be with you">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="May the Force be with you">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/4a5480b5/" class="post-title-link" itemprop="url">TensorFlow将已训练模型保存并预测</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-17 16:07:01" itemprop="dateCreated datePublished" datetime="2019-08-17T16:07:01+08:00">2019-08-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-18 17:35:17" itemprop="dateModified" datetime="2020-09-18T17:35:17+08:00">2020-09-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%A0%94%E7%A9%B6/" itemprop="url" rel="index"><span itemprop="name">研究</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>第一次接触机器学习，训练和测试网上都有大把的教程，但是当我需要使用模型进行预测的时候，却遇到了一些麻烦，在这里就把自己的一部分总结写下来。<strong>注意这里是将训练好的神经网络拿出来进行预测（使用），而不是测试，测试可与训练在一个文件中进行，当然也可像这样载入网络和训练数据来测试。</strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/4a5480b5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/acfa3dd9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/upload/header.jpg">
-      <meta itemprop="name" content="Tianyi Han">
-      <meta itemprop="description" content="May the Force be with you">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="May the Force be with you">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/acfa3dd9/" class="post-title-link" itemprop="url">如何解释关系数据库的范式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-16 18:15:32" itemprop="dateCreated datePublished" datetime="2019-08-16T18:15:32+08:00">2019-08-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-19 12:12:18" itemprop="dateModified" datetime="2020-09-19T12:12:18+08:00">2020-09-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>首先要明白”范式（NF）”是什么意思。按照教材中的定义，范式是“符合某一种级别的关系模式的集合，表示一个关系内部各属性之间的联系的合理化程度”。很晦涩吧？实际上你可以把它粗略地理解为<strong>一张数据表的表结构所符合的某种设计标准的级别</strong>。就像家里装修买建材，最环保的是E0级，其次是E1级，还有E2级等等。数据库范式也分为1NF，2NF，3NF，BCNF，4NF，5NF。一般在我们设计关系型数据库的时候，最多考虑到BCNF就够。符合高一级范式的设计，必定符合低一级范式，例如符合2NF的关系模式，必定符合1NF。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/acfa3dd9/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -1171,6 +608,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-SE"><span class="nav-number">1.</span> <span class="nav-text">Java SE</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E9%9B%86%E5%90%88%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">Java集合类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E4%BD%93%E5%88%86%E6%9E%90"><span class="nav-number">1.1.1.</span> <span class="nav-text">总体分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%86%E5%90%88%E7%B1%BB%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.2.</span> <span class="nav-text">集合类介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterator-%E4%B8%8E-ListIterator%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.1.3.</span> <span class="nav-text">Iterator 与 ListIterator详解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Iterator"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">1.Iterator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-ListIterator"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">2.ListIterator</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring"><span class="nav-number">2.</span> <span class="nav-text">Spring</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-Bean"><span class="nav-number">2.1.</span> <span class="nav-text">Java Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DIP-%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99"><span class="nav-number">2.2.</span> <span class="nav-text">DIP(依赖倒置原则)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99%EF%BC%88Dependency-Inversion-Principle-%EF%BC%89"><span class="nav-number">2.2.0.1.</span> <span class="nav-text">依赖倒置原则（Dependency Inversion Principle ）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC%EF%BC%88Inversion-of-Control%EF%BC%89"><span class="nav-number">2.2.0.2.</span> <span class="nav-text">控制反转（Inversion of Control）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC%E5%AE%B9%E5%99%A8-IoC-Container"><span class="nav-number">2.2.0.3.</span> <span class="nav-text">控制反转容器(IoC Container)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IoC-%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC"><span class="nav-number">2.3.</span> <span class="nav-text">IoC(控制反转)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DI-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-number">2.4.</span> <span class="nav-text">DI(依赖注入)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-number">2.4.0.1.</span> <span class="nav-text">1、构造方法依赖注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81setter%E6%96%B9%E6%B3%95%E6%B3%A8%E5%85%A5"><span class="nav-number">2.4.0.2.</span> <span class="nav-text">2、setter方法注入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%8E%A5%E5%8F%A3%E6%B3%A8%E5%85%A5"><span class="nav-number">2.4.0.3.</span> <span class="nav-text">3、接口注入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP-%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B"><span class="nav-number">2.5.</span> <span class="nav-text">AOP(面向切面编程)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
