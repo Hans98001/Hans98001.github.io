@@ -277,7 +277,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-23 23:33:15" itemprop="dateModified" datetime="2020-10-23T23:33:15+08:00">2020-10-23</time>
+                <time title="修改时间：2020-10-27 18:30:36" itemprop="dateModified" datetime="2020-10-27T18:30:36+08:00">2020-10-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -300,284 +300,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-<h1 id="Java-SE"><a href="#Java-SE" class="headerlink" title="Java SE"></a>Java SE</h1><h2 id="Java集合类"><a href="#Java集合类" class="headerlink" title="Java集合类"></a>Java集合类</h2><h3 id="总体分析"><a href="#总体分析" class="headerlink" title="总体分析"></a>总体分析</h3><table>
-<thead>
-<tr>
-<th align="center">功能描述</th>
-<th align="center">Map</th>
-<th align="center">Set</th>
-<th align="center">List</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">添加对象</td>
-<td align="center">put()</td>
-<td align="center">add()</td>
-<td align="center">add(index,element)</td>
-</tr>
-<tr>
-<td align="center">移除对象</td>
-<td align="center">remove(key)</td>
-<td align="center">remove()</td>
-<td align="center">remove(index/element)</td>
-</tr>
-<tr>
-<td align="center">判断是否为空</td>
-<td align="center">isEmpty()</td>
-<td align="center">isEmpty()</td>
-<td align="center">isEmpty()</td>
-</tr>
-<tr>
-<td align="center">返回元素个数</td>
-<td align="center">size()</td>
-<td align="center">size()</td>
-<td align="center">size()</td>
-</tr>
-<tr>
-<td align="center">获取指定对象</td>
-<td align="center">get(key)</td>
-<td align="center">-</td>
-<td align="center">get(index)</td>
-</tr>
-<tr>
-<td align="center">是否包含</td>
-<td align="center">containsKey/Value()</td>
-<td align="center">contanis(element)</td>
-<td align="center">contanis(element)</td>
-</tr>
-</tbody></table>
-<p>集合的有序无序是指在插入的时候，保持插入的顺序性，先插入的放在集合前面，后插入的放在集合后面。一般来说：</p>
-<ul>
-<li>List集合是有序集合，集合中的元素可以重复，访问集合中的元素可以根据元素的索引来访问。</li>
-<li>Set集合是无序集合，集合中的元素不可以重复，访问集合中的元素只能根据元素本身来访问（也是集合里元素不允许重复的原因）。</li>
-<li>Map集合中保存Key-value对形式的元素，访问时只能根据每项元素的key来访问其value。</li>
-</ul>
-<p>排序是指插入元素后，集合中的元素是否自动进行排序(例如升序降序)。</p>
-<table>
-<thead>
-<tr>
-<th>集合类</th>
-<th>是否有序</th>
-<th>是否排序</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ArrayList</td>
-<td>有序</td>
-<td></td>
-</tr>
-<tr>
-<td>LinkedList</td>
-<td>有序</td>
-<td></td>
-</tr>
-<tr>
-<td>HashSet</td>
-<td>无序</td>
-<td></td>
-</tr>
-<tr>
-<td>TreeSet</td>
-<td>有序(二叉树排序)</td>
-<td>默认自然排序</td>
-</tr>
-<tr>
-<td>HashMap</td>
-<td>无序</td>
-<td></td>
-</tr>
-<tr>
-<td>TreeMap</td>
-<td>有序(二叉树排序)</td>
-<td>默认按键值升序</td>
-</tr>
-</tbody></table>
-<h3 id="集合类介绍"><a href="#集合类介绍" class="headerlink" title="集合类介绍"></a>集合类介绍</h3><p><img src="/posts/df2849ec/timg.jpg" alt="timg"></p>
-<p>ArrayList: ArrayList类实现了可变的数组，允许保存所有元素，包括null，并可以根据索引位置对集合进行快速的随机访问；缺点是向指定的索引位置插入对象或删除对象的速度较慢。</p>
-<p>LinkedList：LinkedList类采用链表结构保存对象。这种结构的优点是便于向集合中插入和删除对象，需要向集合中插入、删除对象时，使用LinkedList类实现的List集合的效率较高；但对于随机访问集合中的对象，使用LinkedList类实现List集合的效率较低。</p>
-<p>HashSet：HashSet类实现Set接口，由哈希表（实际上是一个HanshMap实例）支持。它不保证Set的迭代顺序，特别是它不保证该顺序恒久不变。此类允许使用null元素。</p>
-<p>TreeSet: TreeSet类不仅实现了Set接口，该实现了java.util.SortedSet接口，因此，TreeSet类实现的Set集合在遍历时按照自然顺序递增排序，也可以按照指定比较器递增排序，即可以通过比较器对用TreeSet类实现的Set集合中的对象进行排序。TreeSet部分新增方法如下表所示。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>功能描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>first()</td>
-<td>返回此Set中当前第一个（最低）元素</td>
-</tr>
-<tr>
-<td>last()</td>
-<td>返回此Set中当前最后一个（最高）元素</td>
-</tr>
-<tr>
-<td>headSet(E toElement)</td>
-<td>返回一个新的Set集合，新集合是toElement(不含)之前的所有对象</td>
-</tr>
-<tr>
-<td>subSet(E from, E to)</td>
-<td>返回一个新的Set集合，是from(含)与to(不含)对象之间的所有对象</td>
-</tr>
-<tr>
-<td>tailSet(E from)</td>
-<td>返回一个新的Set集合，新集合包含对象From(包含)之后的所有对象</td>
-</tr>
-</tbody></table>
-<p>HashMap: HashMap类是基于哈希表的Map接口的实现，此实现提供所有可选的映射操作，并允许使用null值和null键，但必须保证键的唯一性。HashMap通过哈希表对其内部的映射关系进行快速查找。此类不保证映射的顺序，特别是它不保证该顺序恒久不变。</p>
-<p>TreeMap: TreeMap类不仅实现了Map接口，还实现了java.util.SortedMap接口，因此，集合中的映射关系具有一定的顺序。但在添加、删除和定位映射关系时，TreeMap类比HashMap类性能稍差。由于TreeMap类实现的Map集合中的映射关系是根据键对象按照一定顺序排列的，因此不允许键对象是null。</p>
-<h3 id="Iterator-与-ListIterator详解"><a href="#Iterator-与-ListIterator详解" class="headerlink" title="Iterator 与 ListIterator详解"></a>Iterator 与 ListIterator详解</h3><h4 id="1-Iterator"><a href="#1-Iterator" class="headerlink" title="1.Iterator"></a>1.Iterator</h4><p>Iterator的定义如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Iterator是一个接口，它是集合的迭代器。集合可以通过Iterator去遍历集合中的元素。</p>
-<p>Iterator提供的API接口如下：</p>
-<ul>
-<li><code>boolean hasNext()</code>：判断集合里是否存在下一个元素。如果有，hasNext()方法返回 true。</li>
-<li><code>Object next()</code>：返回集合里下一个元素。</li>
-<li><code>void remove()</code>：删除集合里上一次next方法返回的元素。</li>
-</ul>
-<p>使用示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IteratorExample</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;String&gt; a = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        a.add(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">        a.add(<span class="string">&quot;bbb&quot;</span>);</span><br><span class="line">        a.add(<span class="string">&quot;ccc&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Before iterate : &quot;</span> + a);</span><br><span class="line">        Iterator&lt;String&gt; it = a.iterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            String t = it.next();</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;bbb&quot;</span>.equals(t)) &#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;After iterate : &quot;</span> + a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果如下：</p>
-<blockquote>
-<p>Before iterate : [aaa, bbb, ccc]<br>After iterate : [aaa, ccc]</p>
-</blockquote>
-<p><strong>注意：</strong></p>
-<ul>
-<li>Iterator只能单向移动。</li>
-<li>Iterator.remove()是唯一安全的方式来在迭代过程中修改集合；如果在迭代过程中以任何其它的方式修改了基本集合将会产生未知的行为。而且每调用一次<code>next()</code>方法，<code>remove()</code>方法只能被调用一次，如果违反这个规则将抛出一个异常。</li>
-</ul>
-<h4 id="2-ListIterator"><a href="#2-ListIterator" class="headerlink" title="2.ListIterator"></a>2.ListIterator</h4><p><strong>ListIterator是一个功能更加强大的迭代器, 它继承于Iterator接口，</strong>只能用于各种List类型的访问。可以通过调用<code>listIterator()</code>方法产生一个指向List开始处的ListIterator, 还可以调用<code>listIterator(n)</code>方法创建一个一开始就指向列表索引为n的元素处的ListIterator。</p>
-<p>ListIterator接口定义如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ListIterator</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Iterator</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">E <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">hasPrevious</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">E <span class="title">previous</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">nextIndex</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">previousIndex</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">set</span><span class="params">(E e)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(E e)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>由以上定义我们可以推出ListIterator可以:</p>
-<ul>
-<li>双向移动（向前/向后遍历）.</li>
-<li>产生相对于迭代器在列表中指向的当前位置的前一个和后一个元素的索引.</li>
-<li>可以使用<code>set()</code>方法替换它访问过的最后一个元素.</li>
-<li>可以使用<code>add()</code>方法在<code>next()</code>方法返回的元素之前或<code>previous()</code>方法返回的元素之后插入一个元素.</li>
-</ul>
-<p>使用示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListIteratorExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ArrayList&lt;String&gt; a = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        a.add(<span class="string">&quot;aaa&quot;</span>);</span><br><span class="line">        a.add(<span class="string">&quot;bbb&quot;</span>);</span><br><span class="line">        a.add(<span class="string">&quot;ccc&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;Before iterate : &quot;</span> + a);</span><br><span class="line">        ListIterator&lt;String&gt; it = a.listIterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            System.out.println(it.next() + <span class="string">&quot;, &quot;</span> + it.previousIndex() + <span class="string">&quot;, &quot;</span> + it.nextIndex());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (it.hasPrevious()) &#123;</span><br><span class="line">            System.out.print(it.previous() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        it = a.listIterator(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            String t = it.next();</span><br><span class="line">            System.out.println(t);</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;ccc&quot;</span>.equals(t)) &#123;</span><br><span class="line">                it.set(<span class="string">&quot;nnn&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                it.add(<span class="string">&quot;kkk&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;After iterate : &quot;</span> + a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>输出结果如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Before iterate : [aaa, bbb, ccc]</span><br><span class="line">aaa, <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">bbb, <span class="number">1</span>, <span class="number">2</span></span><br><span class="line">ccc, <span class="number">2</span>, <span class="number">3</span></span><br><span class="line">ccc bbb aaa </span><br><span class="line">bbb</span><br><span class="line">ccc</span><br><span class="line">After iterate : [aaa, bbb, kkk, nnn]</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h1><h2 id="Java-Bean"><a href="#Java-Bean" class="headerlink" title="Java Bean"></a>Java Bean</h2><p>在基于Java平台的计算中，JavaBean是将许多对象封装为单个对象（bean）的类，旨在为Java创建可重用的 软件组件。JavaBean的<strong>所有属性为private</strong>，<strong>提供默认构造方法</strong>，并<strong>提供getter和setter方法</strong>访问属性，同时<strong>实现了serializable接口</strong>实现可序列化。</p>
-<p>它是用Java编写的可重用软件组件，可以在应用程序构建器工具中对其进行可视化操作。</p>
-<h2 id="DIP-依赖倒置原则"><a href="#DIP-依赖倒置原则" class="headerlink" title="DIP(依赖倒置原则)"></a>DIP(依赖倒置原则)</h2><h4 id="依赖倒置原则（Dependency-Inversion-Principle-）"><a href="#依赖倒置原则（Dependency-Inversion-Principle-）" class="headerlink" title="依赖倒置原则（Dependency Inversion Principle ）"></a><strong>依赖倒置原则（Dependency Inversion Principle ）</strong></h4><p>什么是依赖倒置原则？假设我们设计一辆汽车：先设计轮子，然后根据轮子大小设计底盘，接着根据底盘设计车身，最后根据车身设计好整个汽车。这里就出现了一个“依赖”关系：汽车依赖车身，车身依赖底盘，底盘依赖轮子。</p>
-<p><img src="/posts/df2849ec/v2-c68248bb5d9b4d64d22600571e996446_hd-1603466619082.jpg" alt="v2-c68248bb5d9b4d64d22600571e996446_hd"></p>
-<p>这样的设计看起来没问题，但是可维护性却很低。假设设计完工之后，上司却突然说根据市场需求的变动，要我们把车子的轮子设计都改大一码。这下我们就蛋疼了：因为我们是根据轮子的尺寸设计的底盘，轮子的尺寸一改，底盘的设计就得修改；同样因为我们是根据底盘设计的车身，那么车身也得改，同理汽车设计也得改——整个设计几乎都得改！</p>
-<p>我们现在换一种思路。我们先设计汽车的大概样子，然后根据汽车的样子来设计车身，根据车身来设计底盘，最后根据底盘来设计轮子。这时候，依赖关系就倒置过来了：轮子依赖底盘， 底盘依赖车身， 车身依赖汽车。</p>
-<p><img src="/posts/df2849ec/v2-e64bf72c5c04412f626b21753aa9e1a1_hd.jpg" alt="v2-e64bf72c5c04412f626b21753aa9e1a1_hd"></p>
-<p>这时候，上司再说要改动轮子的设计，我们就只需要改动轮子的设计，而不需要动底盘，车身，汽车的设计了。</p>
-<p>这就是依赖倒置原则——把原本的高层建筑依赖底层建筑“倒置”过来，变成底层建筑依赖高层建筑。高层建筑决定需要什么，底层去实现这样的需求，但是高层并不用管底层是怎么实现的。这样就不会出现前面的“牵一发动全身”的情况。</p>
-<h4 id="控制反转（Inversion-of-Control）"><a href="#控制反转（Inversion-of-Control）" class="headerlink" title="控制反转（Inversion of Control）"></a><strong>控制反转（Inversion of Control）</strong></h4><p><strong>控制反转（Inversion of Control）</strong> 就是依赖倒置原则的一种代码设计的思路。具体采用的方法就是所谓的<strong>依赖注入（Dependency Injection）</strong>。其实这些概念初次接触都会感到云里雾里的。说穿了，这几种概念的关系大概如下：</p>
-<p><img src="/posts/df2849ec/v2-ee924f8693cff51785ad6637ac5b21c1_hd.jpg" alt="v2-ee924f8693cff51785ad6637ac5b21c1_hd"></p>
-<p>为了理解这几个概念，我们还是用上面汽车的例子。只不过这次换成代码。我们先定义四个Class，车，车身，底盘，轮胎。然后初始化这辆车，最后跑这辆车。代码结构如下：</p>
-<p><img src="/posts/df2849ec/v2-8ec294de7d0f9013788e3fb5c76069ef_hd.jpg" alt="v2-8ec294de7d0f9013788e3fb5c76069ef_hd"></p>
-<p>这样，就相当于上面第一个例子，上层建筑依赖下层建筑——每一个类的构造函数都直接调用了底层代码的构造函数。假设我们需要改动一下轮胎（Tire）类，把它的尺寸变成动态的，而不是一直都是30。我们需要这样改：</p>
-<p><img src="/posts/df2849ec/v2-64e8b19eeb70d9cf87c27fe4c5c0fc81_hd.jpg" alt="img"></p>
-<p>由于我们修改了轮胎的定义，为了让整个程序正常运行，我们需要做以下改动：</p>
-<p><img src="/posts/df2849ec/v2-82e0c12a1b26f7979ed9241e169affda_hd.jpg" alt="v2-82e0c12a1b26f7979ed9241e169affda_hd"></p>
-<p>由此我们可以看到，仅仅是为了修改轮胎的构造函数，这种设计却需要<strong>修改整个上层所有类的构造函数</strong>！在软件工程中，<strong>这样的设计几乎是不可维护的</strong>——在实际工程项目中，有的类可能会是几千个类的底层，如果每次修改这个类，我们都要修改所有以它作为依赖的类，那软件的维护成本就太高了。</p>
-<p>所以我们需要进行控制反转（IoC），及上层控制下层，而不是下层控制着上层。我们用依赖注入（Dependency Injection）这种方式来实现控制反转。<strong>所谓依赖注入，就是把底层类作为参数传入上层类，实现上层类对下层类的“控制</strong>”。这里我们用<strong>构造方法传递的依赖注入方式</strong>重新写车类的定义：</p>
-<p><img src="/posts/df2849ec/v2-c920a0540ce0651003a5326f6ef9891d_hd.jpg" alt="v2-c920a0540ce0651003a5326f6ef9891d_hd"></p>
-<p>这里我们再把轮胎尺寸变成动态的，同样为了让整个系统顺利运行，我们需要做如下修改：</p>
-<p><img src="/posts/df2849ec/v2-99ad2cd809fcb86dd791ff7f65fb1779_hd.jpg" alt="v2-99ad2cd809fcb86dd791ff7f65fb1779_hd"></p>
-<p>看到没？这里<strong>我只需要修改轮胎类就行了，不用修改其他任何上层类。</strong>这显然是更容易维护的代码。不仅如此，在实际的工程中，这种设计模式还有利于<strong>不同组的协同合作和单元测试：</strong>比如开发这四个类的分别是四个不同的组，那么只要定义好了接口，四个不同的组可以同时进行开发而不相互受限制；而对于单元测试，如果我们要写Car类的单元测试，就只需要Mock一下Framework类传入Car就行了，而不用把Framework, Bottom, Tire全部new一遍再来构造Car。</p>
-<p>这里我们是采用的<strong>构造函数传入</strong>的方式进行的依赖注入。其实还有另外两种方法：<strong>Setter传递</strong>和<strong>接口传递</strong>。这里就不多讲了，核心思路都是一样的，都是为了实现<strong>控制反转</strong>。</p>
-<p><img src="/posts/df2849ec/v2-861683acac47577c81f2b7493dd05649_hd.jpg" alt="img"></p>
-<h4 id="控制反转容器-IoC-Container"><a href="#控制反转容器-IoC-Container" class="headerlink" title="控制反转容器(IoC Container)"></a><strong>控制反转容器(IoC Container)</strong></h4><p>上面的例子中，对车类进行初始化的那段代码发生的地方，就是控制反转容器。</p>
-<p><img src="/posts/df2849ec/v2-c845802f9187953ed576e0555f76da42_hd.jpg" alt="v2-c845802f9187953ed576e0555f76da42_hd"></p>
-<p>显然你也应该观察到了，因为采用了依赖注入，在初始化的过程中就不可避免的会写大量的new。这里IoC容器就解决了这个问题。<strong>这个容器可以自动对你的代码进行初始化，你只需要维护一个Configuration（可以是xml可以是一段代码），而不用每次初始化一辆车都要亲手去写那一大段初始化的代码</strong>。这是引入IoC Container的第一个好处。</p>
-<p>IoC Container的第二个好处是：<strong>我们在创建实例的时候不需要了解其中的细节。</strong>在上面的例子中，我们自己手动创建一个车instance时候，是从底层往上层new的：</p>
-<p><img src="/posts/df2849ec/v2-555b2be7d76e78511a6d6fed3304927f_hd.jpg" alt="img"></p>
-<p>这个过程中，我们需要了解整个Car/Framework/Bottom/Tire类构造函数是怎么定义的，才能一步一步new/注入。</p>
-<p>而IoC Container在进行这个工作的时候是反过来的，它先从最上层开始往下找依赖关系，到达最底层之后再往上一步一步new（有点像深度优先遍历）：</p>
-<p><img src="/posts/df2849ec/v2-24a96669241e81439c636e83976ba152_hd.jpg" alt="img"></p>
-<p>这里IoC Container可以直接隐藏具体的创建实例的细节，在我们来看它就像一个工厂：</p>
-<p><img src="/posts/df2849ec/v2-5ca61395f37cef73c7bbe7808f9ea219_hd.jpg" alt="img"></p>
-<p>我们就像是工厂的客户。我们只需要向工厂请求一个Car实例，然后它就给我们按照Config创建了一个Car实例。我们完全不用管这个Car实例是怎么一步一步被创建出来。</p>
-<p>实际项目中，有的Service Class可能是十年前写的，有几百个类作为它的底层。假设我们新写的一个API需要实例化这个Service，我们总不可能回头去搞清楚这几百个类的构造函数吧？IoC Container的这个特性就很完美的解决了这类问题——<strong>因为这个架构要求你在写class的时候需要写相应的Config文件，所以你要初始化很久以前的Service类的时候，前人都已经写好了Config文件，你直接在需要用的地方注入这个Service就可以了</strong>。这大大增加了项目的可维护性且降低了开发难度。</p>
-<p>作者：Mingqi<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23277575/answer/169698662">https://www.zhihu.com/question/23277575/answer/169698662</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<h2 id="IoC-控制反转"><a href="#IoC-控制反转" class="headerlink" title="IoC(控制反转)"></a>IoC(控制反转)</h2><p>IoC （Inversion of Control ）控制反转/反转控制。它是一种思想不是一个技术实现。描述的是：Java 开发领域对象的创建以及管理的问题。这个设计思想就是 <strong>将原本在程序中手动创建对象的控制权，交由 Spring 框架来管理。</strong> IoC 在其他语言中也有应用，并非 Spring 特有。<strong>IoC 容器是 Spring 用来实现 IoC 的载体， IoC 容器实际上就是个 Map（key，value）,Map 中存放的是各种对象。</strong></p>
-<p>例如：现有类 A 依赖于类 B</p>
-<ul>
-<li><strong>传统的开发方式</strong> ：往往是在类 A 中手动通过 new 关键字来 new 一个 B 的对象出来</li>
-<li><strong>使用 IoC 思想的开发方式</strong> ：不通过 new 关键字来创建对象，而是通过 IoC 容器(Spring 框架) 来帮助我们实例化对象。我们需要哪个对象，直接从 IoC 容器里面过去即可。</li>
-</ul>
-<p>从以上两种开发方式的对比来看：我们 “丧失了一个权力” (创建、管理对象的权力)，从而也得到了一个好处（不用再考虑对象的创建、管理等一系列的事情）</p>
-<p><strong>控制</strong> ：指的是对象创建（实例化、管理）的权力</p>
-<p><strong>反转</strong> ：控制权交给外部环境（Spring 框架、IoC 容器）</p>
-<p><img src="/posts/df2849ec/640.jpg" alt="有无ioc对比"></p>
-<p><strong>IoC的目的</strong></p>
-<p>IoC 的思想就是两方之间不互相依赖，由第三方容器来管理相关资源。这样有什么好处呢？</p>
-<ol>
-<li>对象之间的耦合度或者说依赖程度降低；</li>
-<li>资源变的容易管理；比如你用 Spring 容器提供的话很容易就可以实现一个单例。</li>
-</ol>
-<p>例如：现有一个针对 User 的操作，利用 Service 和 Dao 两层结构进行开发</p>
-<p>在没有使用 IoC 思想的情况下，Service 层想要使用 Dao 层的具体实现的话，需要通过 new 关键字在<code>UserServiceImpl</code> 中手动 new 出 <code>IUserDao</code> 的具体实现类 <code>UserDaoImpl</code>（不能直接 new 接口类）。</p>
-<p><img src="/posts/df2849ec/2.jpg" alt="2"></p>
-<p>很完美，这种方式也是可以实现的，但是我们想象一下如下场景：</p>
-<p>开发过程中突然接到一个新的需求，针对对<code>IUserDao</code> 接口开发出另一个具体实现类。因为 Server 层依赖了<code>IUserDao</code>的具体实现，所以我们需要修改<code>UserServiceImpl</code>中 new 的对象。如果只有一个类引用了<code>IUserDao</code>的具体实现，可能觉得还好，修改起来也不是很费力气，但是如果有许许多多的地方都引用了<code>IUserDao</code>的具体实现的话，一旦需要更换<code>IUserDao</code> 的实现方式，那修改起来将会非常的头疼。</p>
-<p><img src="/posts/df2849ec/3.jpg" alt="3"></p>
-<p>使用 IoC 的思想，我们将对象的控制权（创建、管理）交有 IoC 容器去管理，我们在使用的时候直接向 IoC 容器 “要” 就可以了</p>
-<p><img src="/posts/df2849ec/4.jpg" alt="4"></p>
-<h2 id="DI-依赖注入"><a href="#DI-依赖注入" class="headerlink" title="DI(依赖注入)"></a>DI(依赖注入)</h2><p>控制反转是一种思想，是能够解决问题的一种可能的结果，而依赖注入（Dependency Injection）就是其最典型的实现方法。由第三方（我们称作IOC容器）来控制依赖，把他通过构造函数、属性或者工厂模式等方法，注入到类A内，这样就极大程度的对类A和类B进行了解耦。</p>
-<p>进行依赖注入有三种方式：</p>
-<h4 id="1、构造方法依赖注入"><a href="#1、构造方法依赖注入" class="headerlink" title="1、构造方法依赖注入"></a><strong>1、构造方法依赖注入</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StupidStudent</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SmartStudent smartStudent;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">StupidStudent</span><span class="params">(SmartStudent smartStudent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.smartStudent = smartStudent;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">doHomewrok</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        smartStudent.doHomework();</span><br><span class="line">        System.out.println(<span class="string">&quot;学渣抄作业&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SmartStudent smartStudent = <span class="keyword">new</span> SmartStudent();</span><br><span class="line">        StupidStudent stupidStudent = <span class="keyword">new</span> StupidStudent(smartStudent);</span><br><span class="line">        stupidStudent.doHomework();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种方式好比学渣从一开始就赖上了一个学霸，并且和这个学霸建立了长期合作关系。</p>
-<h4 id="2、setter方法注入"><a href="#2、setter方法注入" class="headerlink" title="2、setter方法注入"></a><strong>2、setter方法注入</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StupidStudent</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> SmartStudent smartStudent;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSmartStudent</span><span class="params">(SmartStudent smartStudent)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.smartStudent = smartStudent;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">doHomewrok</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        smartStudent.doHomework();</span><br><span class="line">        System.out.println(<span class="string">&quot;学渣抄作业&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SmartStudent smartStudent = <span class="keyword">new</span> SmartStudent();</span><br><span class="line">        StupidStudent stupidStudent = <span class="keyword">new</span> StupidStudent();</span><br><span class="line">        stupidStudent.setSmartStudent(smartStudent);</span><br><span class="line">        stupidStudent.doHomework();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种方式学霸和学渣只是暂时的合作关系，如果学渣赖上了另一个学霸（调用set()方法传入了另一个对象），那么学渣和学霸的合作关系就结束了。</p>
-<h4 id="3、接口注入"><a href="#3、接口注入" class="headerlink" title="3、接口注入"></a><strong>3、接口注入</strong></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StupidStudent</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doHomewrok</span><span class="params">(SmartStudent smartStudent)</span> </span>&#123;</span><br><span class="line">        smartStudent.doHomework();</span><br><span class="line">        System.out.println(<span class="string">&quot;学渣抄作业&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        SmartStudent smartStudent = <span class="keyword">new</span> SmartStudent();</span><br><span class="line">        StupidStudent stupidStudent = <span class="keyword">new</span> StupidStudent();</span><br><span class="line">        stupidStudent.doHomework(smartStudent);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>采用这种注入方式，学渣只是在做作业时，才临时抱佛脚地找一下学霸。</p>
-<h2 id="AOP-面向切面编程"><a href="#AOP-面向切面编程" class="headerlink" title="AOP(面向切面编程)"></a>AOP(面向切面编程)</h2><p>AOP：Aspect oriented programming 面向切面编程，AOP 是 OOP（面向对象编程）的一种延续。AOP 主要用来解决在不改变原有业务逻辑的情况下，增强横切逻辑代码，根本上解耦合，避免横切逻辑代码重复。</p>
-<p>下面我们看一个 OOP 的例子。</p>
-<p>例如：现有三个类，<code>Horse</code>、<code>Pig</code>、<code>Dog</code>，这三个类中都有 eat 和 run 两个方法。</p>
-<p>通过 OOP 思想中的继承，我们可以提取出一个 Animal 的父类，然后将 eat 和 run 方法放入父类中，<code>Horse</code>、<code>Pig</code>、<code>Dog</code>通过继承<code>Animal</code>类即可自动获得 <code>eat()</code> 和 <code>run()</code> 方法。这样将会少些很多重复的代码。</p>
-<p><img src="/posts/df2849ec/5.jpg" alt="5"></p>
-<p>OOP 编程思想可以解决大部分的代码重复问题。但是有一些问题是处理不了的。比如在父类 Animal 中的多个方法的相同位置出现了重复的代码，OOP 就解决不了。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 动物父类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 身高 */</span></span><br><span class="line">    <span class="keyword">private</span> String height;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** 体重 */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> weight;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 性能监控代码</span></span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 业务逻辑代码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;I can eat...&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 性能监控代码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;执行时长：&quot;</span> + (System.currentTimeMillis() - start)/<span class="number">1000f</span> + <span class="string">&quot;s&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 性能监控代码</span></span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 业务逻辑代码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;I can run...&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 性能监控代码</span></span><br><span class="line">        System.out.println(<span class="string">&quot;执行时长：&quot;</span> + (System.currentTimeMillis() - start)/<span class="number">1000f</span> + <span class="string">&quot;s&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这部分重复的代码，一般统称为 <strong>横切逻辑代码</strong>。</p>
-<p><img src="/posts/df2849ec/6.jpg" alt="6"></p>
-<p>横切逻辑代码存在的问题：</p>
-<ul>
-<li>代码重复问题</li>
-<li>横切逻辑代码和业务代码混杂在一起，代码臃肿，不变维护</li>
-</ul>
-<p><strong>AOP 就是用来解决这些问题的</strong></p>
-<p>AOP 另辟蹊径，提出横向抽取机制，将横切逻辑代码和业务逻辑代码分离</p>
-<p><img src="/posts/df2849ec/7.jpg" alt="7"></p>
-<p>代码拆分比较容易，难的是如何在不改变原有业务逻辑的情况下，悄无声息的将横向逻辑代码应用到原有的业务逻辑中，达到和原来一样的效果。</p>
-<p><strong>AOP 为什么叫面向切面编程</strong></p>
-<p><strong>切</strong> ：指的是横切逻辑，原有业务逻辑代码不动，只能操作横切逻辑代码，所以面向横切逻辑</p>
-<p><strong>面</strong> ：横切逻辑代码往往要影响的是很多个方法，每个方法如同一个点，多个点构成一个面。这里有一个面的概念</p>
-
+          <p>Java总结</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/df2849ec/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -730,6 +461,112 @@
             </div>
           <!--/noindex-->
         
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/f89f9404/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/upload/header.jpg">
+      <meta itemprop="name" content="Tianyi Han">
+      <meta itemprop="description" content="May the Force be with you">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="May the Force be with you">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/f89f9404/" class="post-title-link" itemprop="url">字节跳动一二面凉经</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-09 18:12:59" itemprop="dateCreated datePublished" datetime="2019-09-09T18:12:59+08:00">2019-09-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-27 18:55:50" itemprop="dateModified" datetime="2020-10-27T18:55:50+08:00">2020-10-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AE%9E%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">实习</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一面</p>
+<p>自我介绍（13.50-14.35）</p>
+<p>简单问问项目情况，balabalabala…</p>
+<p>进程线程协程的区别，在什么情况使用</p>
+<p>数据库的锁都有哪些</p>
+<p>MySQL的引擎了解吗</p>
+<p>数据库不同的用户需要查看不同的内容，且数据库比较大，权限该怎么给</p>
+<p>数据库的索引、复合索引</p>
+<p>加密知道吗</p>
+<p>TCP和UDP的区别</p>
+<p>TCP连接的断开</p>
+<p>UDP一般什么时候使用</p>
+<p>写算法题</p>
+<p>前序遍历（秒了）要是层次遍历思路是什么</p>
+<p>给定一个数组，找出所有满足大于左侧最大数且小于右侧最小数的数</p>
+<p>有什么问题吗</p>
+<p>二面（14.40-15.30）</p>
+<p>自我介绍</p>
+<p>简单问问项目情况，balabalabala…</p>
+<p>项目里数据库是怎么用的</p>
+<p>手撕代码</p>
+<ol>
+<li><p>两个已排序的数组找第K大的数（直接暴力O(n)被制止了，让用二分查找，然后在一堆提示之后也没找出思路）</p>
+</li>
+<li><p>实现Cache的LRU替换</p>
+<p>给定Cache的MAX_SIZE=2000000，给定函数String GetFromMemory(String Keys)</p>
+<p>要求实现String GetFromCache(String keys)函数（数量大不允许暴力查找，在多次提示下想到链表，btw，我是真忘了链表这个东西的存在了…，然后双向链表+HashMap解决）</p>
+</li>
+</ol>
+<p>要和下一面的面试官商量一下，回去等HR通知，估计就是挂了</p>
+<p>Ps.啊，这个二面的面试官看起来人不错，就是给我提示的时候非常乱，听不太懂，题目出的也比较难，一面面试官人就很温柔</p>
+<p>Pps.二面第一题在leetcode竟然是困难难度的，实习生需要考这么难的吗</p>
+<p>Ppps.后来我发现，真的是我菜，代码有一堆问题，挂了也不怨</p>
+
       
     </div>
 
@@ -1136,14 +973,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
