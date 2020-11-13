@@ -20,22 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="实习的时候恰好遇到从svn向git迁移，两个正好一起用过就总结一下两种的区别。">
+  <meta name="description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git和svn对比">
-<meta property="og:url" content="http://example.com/posts/24d07237/index.html">
+<meta property="og:title" content="腾讯一二面面经">
+<meta property="og:url" content="http://example.com/posts/ecb2ee70/index.html">
 <meta property="og:site_name" content="May the Force be with you">
-<meta property="og:description" content="实习的时候恰好遇到从svn向git迁移，两个正好一起用过就总结一下两种的区别。">
+<meta property="og:description" content="有东西被加密了, 请输入密码查看.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/posts/24d07237/6l06iyluxp.jpg">
-<meta property="article:published_time" content="2020-10-23T15:30:00.000Z">
-<meta property="article:modified_time" content="2020-10-23T15:33:07.343Z">
+<meta property="article:published_time" content="2019-09-19T07:12:59.000Z">
+<meta property="article:modified_time" content="2020-11-13T13:36:36.823Z">
 <meta property="article:author" content="Tianyi Han">
-<meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="面经">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/posts/24d07237/6l06iyluxp.jpg">
 
-<link rel="canonical" href="http://example.com/posts/24d07237/">
+<link rel="canonical" href="http://example.com/posts/ecb2ee70/">
 
 
 <script id="page-configurations">
@@ -48,7 +46,7 @@
   };
 </script>
 
-  <title>git和svn对比 | May the Force be with you</title>
+  <title>腾讯一二面面经 | May the Force be with you</title>
   
 
 
@@ -177,7 +175,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/24d07237/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/ecb2ee70/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/upload/header.jpg">
@@ -190,7 +188,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          git和svn对比
+          腾讯一二面面经
         </h1>
 
         <div class="post-meta">
@@ -199,17 +197,23 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-10-23 23:30:00 / 修改时间：23:33:07" itemprop="dateCreated datePublished" datetime="2020-10-23T23:30:00+08:00">2020-10-23</time>
+              <time title="创建时间：2019-09-19 15:12:59" itemprop="dateCreated datePublished" datetime="2019-09-19T15:12:59+08:00">2019-09-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-13 21:36:36" itemprop="dateModified" datetime="2020-11-13T21:36:36+08:00">2020-11-13</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                  <a href="/categories/%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">杂谈</span></a>
                 </span>
             </span>
 
@@ -224,69 +228,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>实习的时候恰好遇到从svn向git迁移，两个正好一起用过就总结一下两种的区别。</p>
-<a id="more"></a>
-
-<p>SVN和Git最大的区别是SVN是集中式的，必须联网才能工作，而Git是分布式的且支持离线工作。</p>
-<p>Git的核心概念是工作流：</p>
-<ul>
-<li>工作区(Workspace)是电脑中实际的目录。</li>
-<li>暂存区(Index)类似于缓存区域，临时保存你的改动。</li>
-<li>仓库区(Repository)，分为本地仓库和远程仓库。</li>
-</ul>
-<p>Git提交代码的流程：</p>
-<ol>
-<li><code>git add</code> 从工作区提交到暂存区</li>
-<li><code>git commit</code> 从暂存区提交到本地仓库</li>
-<li><code>git push</code> 从本地仓库提交到远程仓库</li>
-</ol>
-<p><img src="/posts/24d07237/6l06iyluxp.jpg" alt="Git命令流程"></p>
-<p>下表是svn和git命令对比。</p>
-<table>
-<thead>
-<tr>
-<th>功能</th>
-<th>svn</th>
-<th>git</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>工作区更新</td>
-<td>svn up(date)</td>
-<td>git pull</td>
-</tr>
-<tr>
-<td>添加文件</td>
-<td>svn add <path></path></td>
-<td>git add <path></path></td>
-</tr>
-<tr>
-<td>删除文件</td>
-<td>svn rm <path></path></td>
-<td>git rm <path></path></td>
-</tr>
-<tr>
-<td>查看工作区状态</td>
-<td>svn status</td>
-<td>git status</td>
-</tr>
-<tr>
-<td>提交</td>
-<td>svn commit -m “msg”</td>
-<td>git commit -m “msg”/git push</td>
-</tr>
-<tr>
-<td>工作区差异比较</td>
-<td>svn diff</td>
-<td>git diff (HEAD)</td>
-</tr>
-<tr>
-<td>显示提交日志</td>
-<td>svn log</td>
-<td>git log</td>
-</tr>
-</tbody></table>
-
+        <div id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容."><div class="hbe-input-container"><input type="password" id="hbePass" placeholder="您好, 这里需要密码." /><label>您好, 这里需要密码.</label><div class="bottom-line"></div></div><script id="hbeData" type="hbeData" data-hmacdigest="c757bd8c0ddb14fd7718c56bb5253a622853c1b22988657364ea86f09339389e">c85c34bfefe3468a3235e224bc7ada9b7884c317dbc0628c4be17cddf215661b06c9373b5090c5cadb3672f588f2cb4854e939f7d9550c1d8c1f54f2a814b5dce24cedf9ebee29d9e7cf992510ad5b00d227f039d671f35de7cfb20cdb36ce116b3547331723b9cb443a6521dc63fa46d347e2ff7f382b2fdbe0866ed0ad1cfc26117a21802e5dd1babf45327170c4fde2de939bf4488672e4c0f0de4ad4979d0900ae4ed36b3735348fb532e25572c0ad7e30de02800f20fb8fa87f1dec56e0c50f3ea16f98198cc41f581ae0d9d38a36fc5f4912a516c17bfb4bf23a4bbc93f2d22452f6118dec8e1a05547196bc08c75fc73ea91623a244c6e204b1e75ac90beb3cfb95f91af21c136566b3335ac9bc874cf54205d1892e4b683c319b6e9287d0228b1268128c164cd54d45897be8e15339bef12c50cecb8960a2b5568d107432b9a464da9463334125a133810ece8f14ab0ff1098450f8ca08d3728102570194b78c86e442eaea6dbc845307c061b710019a373dcd27aafd73c2b56974539b93342f5f15f37322aee22161ffe080be69c6acb609604f6dac71b75214abcf8c3057380abf3b125e8de57df39cc75079c86706c7f3927f46705951096b48c476786b5935c736d3ad2cdd7f30ae749c68545cf7b86a2b44a658d07cecd4adfdfa7bf9259806b7efc9c2a1c18420faf08c4ce9cdad8d82f444694aefea86110fefd517cd1fdd9741a33d6bef85ce1494200ec242d87fe5cacf14db6b8eb51d484fadd924c6bc635d9d732f3117b02a54c6b619d6e07fecd816c66942be1e5a5d35389dd7f676eb2181a01fc5c26fbce8ca6d60b894cb7d3895fc00d7f515238c99ea821a525adc90009331bdca3fa805dbf07b15b6f94269e2148124b3ed6178b8230a77caf5981c99bf9b568322c190c603ed84dafbad7e02f77bda6e0c1a76381e8b919d5d7f9df9ccc19e9b7437839c7c569ec620f124f6ba321bb2b4658857bc2c4244b3cffd651310a9e00b8c8a4338f5facf81fd77e3bb0b5697b4f63ecbedc9c02592b4d4e3447f22684b6102e9ca0dcbc34e2599ca9a3de782176174765647430d7ec9b3dd514f41394a6d3a59f6a491b425b3d072913b768de30d9cfc412bb428b00ee42abccf00a8c8df29f32b48a54c93669d67daa63cefe6fc5e62f21616a8d6e1a15f2b528e9b332de57cfd99a3ce05a8c662a6efa65768d66f16af9f060efdbd4b433da7deb90428b72568fb88886867c26e93b036bef0ad8dfd96df20a41b8977a516fc0e1c9778f77b6716865e171bdcde27476dcc72e8dca01550a7b606cde4526319badbd1d68f2466c7e7be6773ddb4b056e5492a5b6f1c19cc30b2912651c5fe2c19c08fafc7993575035ac8fbd58b18927bb10ce108d3857371e07bbf786fd6693a48a98ccd1aa4f41177a10e671a61db90b72fda8fab3f310bdb99563258e069d00af1c83f0e20f720fae8e443ec1ed5c8488e80629084466f23a18de6964eaf43b111cbdd8737908a1f982241f8364b07b44e28cac6d00ff5b803f86806b09068ef47c290879c9bb42d69106c4ebdeb13487d73a709517e5b3ff01beb4f9f32981f4f223421b724fa817cf7a6ab68f82c761a8ba45074fc5f221695e81d7f914e4dc4acb5a09d0ff879694a1f9c536b7d5a7b92dec6533f6655c805776fc48be41d22882b9993cecacc9ec8c4d20570c93e2685b89b2a347ecf192f1df3d47ef4d83df0f1564141da500297ca19013ea1194ab7cba0d1f6c67fe882240ae39ff9007b36942063899e6a92f90efb2a54bda38522541fffe2cbfd8a424b8ba8867a950959c0f6a673a361d4fa1dbb7be3525e63e04b397eeb31d2a712a5bad9892484b527a4c5cdaa611893c6de1fc6518b12fc28938464c2960483340724bf5b9fd292ec06b502142d8eb8d665ec8af71dc7468d983c5a65f1ebf7ac630e6355696d2771dcbcfb4049413e17b427b39e7f15facb4ba6bd1527549e43babd751a5a42fb924f84bbec47679eea11bf0b3dda03545606215c8f098dc347907930f7c5bee3447b1a858bce67e16b5359b47ec56de2d8fde800c225559b8e8c93093f1102ef35d1ecaa2d2d874ed7d288402832da1ca6b2ca0bb4e5b3769e7e6e70009ffdc17e66b021f619d653434f738b071580c33e40c89f723e80b40dae855833d100d7faa1f530f6c554a7a6ad781aff663c5ae7eb57f2361fb58342e986882277b1ab28f43e06a921d3c23ede09586d97b8055062dee5338aa7e7a2c33bb64face374afe9d743ae83684e2853eff5d015894aa32a1e5305828a0f9e4aec6c7425015e034132d0892c512960899791bedc8ed4f546686c4be9c256a534dece10724a5a65613e39fb24741f43c88d5d2702c4ef17ee70248e090b75570e73844a848dfd0ccefe3952e2c1cc363abf9859f3b23bd590058f4b1a4fd3ebbce376029af90a21f96ab6ae0ef038e1716f18909c18ab15d79afd4faec9df6bbf1c641a60e397c0c1d3ef5b6514da0b9f8e2676466926f2b12cef5eb1335f76bd67269e1a0fb638cd764121f42f4b93ce54cc5745e3a03b1fe8d1ad05fedf1a0204ec1c5ef876df84260076a4eb995f10e0fd5fa2647d6f1497671eab1108b5d0e0527c884cafe9acc3f3ca41b3027b4d4ce1a9518b0abb66b006c23100293065441f7d8eca7d279a1fe7232240bcaa12d94eb4c88f5a6b35819ec20907fdb66fe10e07ee8945c21e709f039999ef7e78e2be399a660050341a110f2314b799d4951484957ff8992bddc6f1541367cd3bef9d0916ae6f45967316388505a5bcdd989d57bd1347fdd451f0f6cb8054fd54e74ac569203647c1877af123cc207b4d916ebee041368d903546b49a4886bb05c715d1b21d8aea40f1129403a9bfd1b077bed69a53b81c610e51d4b1f8632a4a24c029c03faae5a321e11874a917fb959591c0eba1628c64c5042308b16e44aa26a13ac89580832829d74dcdab7f46018e40bd03e9d791d7559b7d70224aaca11b61519f6dda7cf93cf8316a1f4e100c61926bc670ca24725b874617445d27c19f6e90979342464fb8ded816644a55f96023337a5d3fb827490498eccbed7f0405d105423b676e88a5260bb8e60d16cf66acd87cdfd4286a428eb97cbce87547c8f34164ddae9106220ee517e7f6647d59545ce2d707bf9402e99c2f9c8bf62dba3b1f6e88406b110d03dbfc0b0277a84254c4e3d97f193158f2a0cd4fb014d3c57e6bd8516976241be3839169de5a84d5c8120125a82562fd168981997fcbb7496657df60ab78765c151e02183c87a38e16acaaac4368cf89597f340d14d86aaef82c189a2552cbadc38d05eba406b4a8d074b7e70df9d8824ca4246145b0f191463f08d304a359fde110c2711babdf11b8553443735ad1973291ee6650804cc89ffa8153b0002b1cc11e9e9caf98c637145766c65e3b00bdd28e0f760d3b9ed325a2395600aac68f83a674ace7e861042f2d67648f88eabb3573387d9f2127e5bb58d68a3ea62a99985432b0c4a5c9d18673172fac69c1dada5d005a4c1fde43b17e6ede2a2609e34d1c722c2b1627198996d5d999f0ef</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
     </div>
 
     
@@ -295,7 +237,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># 基础知识</a>
+              <a href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag"># 面经</a>
           </div>
 
         
@@ -304,10 +246,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/df2849ec/" rel="prev" title="Java">
-      <i class="fa fa-chevron-left"></i> Java
+    <a href="/posts/f89f9404/" rel="prev" title="字节跳动一二面凉经">
+      <i class="fa fa-chevron-left"></i> 字节跳动一二面凉经
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/posts/33e1d606/" rel="next" title="树莓派安装Pytorch踩坑">
+      树莓派安装Pytorch踩坑 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
