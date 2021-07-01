@@ -202,7 +202,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-02 09:20:57" itemprop="dateModified" datetime="2021-06-02T09:20:57+08:00">2021-06-02</time>
+                <time title="修改时间：2021-07-01 09:23:48" itemprop="dateModified" datetime="2021-07-01T09:23:48+08:00">2021-07-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,25 +227,213 @@
       
           <a id="more"></a>
 
-<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="数据库引擎"><a href="#数据库引擎" class="headerlink" title="数据库引擎"></a>数据库引擎</h2><h3 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h3><h3 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h3><h3 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h3><h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ol>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p><strong>SELECT DISTINCT筛选不重复</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> country <span class="keyword">FROM</span> Websites;</span><br></pre></td></tr></table></figure>
+
+<p><strong>AND &amp; OR与或</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Websites</span><br><span class="line"><span class="keyword">WHERE</span> country=<span class="string">&#x27;CN&#x27;</span></span><br><span class="line"><span class="keyword">AND</span> alexa &gt; <span class="number">50</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>ORDER BY排序</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Websites</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> alexa <span class="keyword">ASC</span>|<span class="keyword">DESC</span>;	<span class="comment">--升序降序</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="高级语法"><a href="#高级语法" class="headerlink" title="高级语法"></a>高级语法</h3><p><strong>limit返回指定数目</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Websites <span class="keyword">LIMIT</span> <span class="number">1</span>,<span class="number">1</span>;	<span class="comment">--mysql,从第二个开始查找查找一个</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">5</span> * <span class="keyword">from</span> <span class="keyword">table</span>;	<span class="comment">--sql server</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>like通配符</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Websites <span class="keyword">WHERE</span> <span class="keyword">name</span> <span class="keyword">LIKE</span> <span class="string">&#x27;G%&#x27;</span>;	<span class="comment">--G开头</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Websites <span class="keyword">WHERE</span> <span class="keyword">name</span> <span class="keyword">LIKE</span> <span class="string">&#x27;%G&#x27;</span>;	<span class="comment">--G结尾</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Websites <span class="keyword">WHERE</span> <span class="keyword">name</span> <span class="keyword">LIKE</span> <span class="string">&#x27;%G%&#x27;</span>;	<span class="comment">--含有G</span></span><br><span class="line"><span class="comment">-- %任意字符 -单个字符</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>in操作符</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Websites</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">name</span> <span class="keyword">IN</span> (<span class="string">&#x27;Google&#x27;</span>,<span class="string">&#x27;菜鸟教程&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>BETWEEN 操作符</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> Websites</span><br><span class="line"><span class="keyword">WHERE</span> alexa <span class="keyword">BETWEEN</span> <span class="number">1</span> <span class="keyword">AND</span> <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>as别名</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> w.name, w.url, a.count, a.date</span><br><span class="line"><span class="keyword">FROM</span> Websites <span class="keyword">AS</span> w, access_log <span class="keyword">AS</span> a</span><br><span class="line"><span class="keyword">WHERE</span> a.site_id=w.id <span class="keyword">and</span> w.name=<span class="string">&quot;菜鸟教程&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>join连接</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Websites.id, Websites.name, access_log.count, access_log.date</span><br><span class="line"><span class="keyword">FROM</span> Websites</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> access_log</span><br><span class="line"><span class="keyword">ON</span> Websites.id=access_log.site_id;</span><br></pre></td></tr></table></figure>
+
+<p><strong>A inner join B</strong> 取交集。</p>
+<p><strong>A left join B</strong> 取 A 全部，B 没有对应的值为 null。</p>
+<p><strong>A right join B</strong> 取 B 全部 A 没有对应的值为 null。</p>
+<p><strong>A full outer join B</strong> 取并集，彼此没有对应的值为 null。</p>
+<img src="/posts/14ea6df7/sql-join.png" alt="img" style="zoom: 50%;">
+
+<p><strong>UNION连接两个表</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> country <span class="keyword">FROM</span> websites <span class="keyword">UNION</span> <span class="keyword">SELECT</span> country <span class="keyword">FROM</span> apps;</span><br><span class="line"><span class="comment">--连接两个表的查询结果集，重复的不显示</span></span><br><span class="line"><span class="keyword">SELECT</span> country <span class="keyword">FROM</span> websites <span class="keyword">UNION</span> <span class="keyword">all</span> <span class="keyword">SELECT</span> country <span class="keyword">FROM</span> apps <span class="keyword">ORDER</span> <span class="keyword">BY</span> country;</span><br><span class="line"><span class="comment">--连接俩个个表的查询结果集，显示重复</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>IFNULL(x, y)</strong> 判断第一个表达式是否为 NULL，如果为 NULL 则返回第二个参数的值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">id</span>,<span class="keyword">name</span>,<span class="keyword">url</span>,<span class="keyword">ifnull</span>(alexa,<span class="number">0</span>) <span class="keyword">FROM</span> websites;</span><br></pre></td></tr></table></figure>
+
+<h3 id="SQL约束"><a href="#SQL约束" class="headerlink" title="SQL约束"></a>SQL约束</h3><ul>
+<li><strong>NOT NULL</strong> - 指示某列不能存储 NULL 值。</li>
+<li><strong>UNIQUE</strong> - 保证某列的每行必须有唯一的值。</li>
+<li><strong>PRIMARY KEY</strong> - NOT NULL 和 UNIQUE 的结合。确保某列（或两个列多个列的结合）有唯一标识，有助于更容易更快速地找到表中的一个特定的记录。</li>
+<li><strong>FOREIGN KEY</strong> - 保证一个表中的数据匹配另一个表中的值的参照完整性。</li>
+<li><strong>CHECK</strong> - 保证列中的值符合指定的条件。</li>
+<li><strong>DEFAULT</strong> - 规定没有给列赋值时的默认值。</li>
+</ul>
+<h3 id="SQL函数"><a href="#SQL函数" class="headerlink" title="SQL函数"></a>SQL函数</h3><p><strong>AVG()平均</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(<span class="keyword">count</span>) <span class="keyword">AS</span> CountAverage <span class="keyword">FROM</span> access_log;</span><br></pre></td></tr></table></figure>
+
+<p><strong>COUNT()计数</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> nums <span class="keyword">FROM</span> access_log;</span><br></pre></td></tr></table></figure>
+
+<p><strong>SUM()求和</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(<span class="keyword">count</span>) <span class="keyword">AS</span> nums <span class="keyword">FROM</span> access_log;</span><br></pre></td></tr></table></figure>
+
+<p><strong>GROUP BY聚合</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> site_id, <span class="keyword">SUM</span>(access_log.count) <span class="keyword">AS</span> nums</span><br><span class="line"><span class="keyword">FROM</span> access_log <span class="keyword">GROUP</span> <span class="keyword">BY</span> site_id;</span><br></pre></td></tr></table></figure>
+
+<p><strong>HAVING筛选</strong>，对group by后的分组进行筛选</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Websites.name, Websites.url, <span class="keyword">SUM</span>(access_log.count) <span class="keyword">AS</span> nums <span class="keyword">FROM</span> (access_log</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> Websites</span><br><span class="line"><span class="keyword">ON</span> access_log.site_id=Websites.id)</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> Websites.name</span><br><span class="line"><span class="keyword">HAVING</span> <span class="keyword">SUM</span>(access_log.count) &gt; <span class="number">200</span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>EXISTS存在</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> Websites.name, Websites.url </span><br><span class="line"><span class="keyword">FROM</span> Websites </span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="keyword">count</span> <span class="keyword">FROM</span> access_log <span class="keyword">WHERE</span> Websites.id = access_log.site_id <span class="keyword">AND</span> <span class="keyword">count</span> &gt; <span class="number">200</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数据库引擎"><a href="#数据库引擎" class="headerlink" title="数据库引擎"></a>数据库引擎</h2><h3 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h3><ol>
+<li><p>页是MySQL中磁盘和内存交互的基本单位，也是MySQL是管理存储空间的基本单位。</p>
+</li>
+<li><p>InnoDB目前定义了4种行格式</p>
+<ul>
+<li><p>COMPACT行格式</p>
+<p>具体组成如图： <img src="https://user-gold-cdn.xitu.io/2019/3/12/169710e8fafc21aa?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="image_1c9g4t114n0j1gkro2r1h8h1d1t16.png-42.4kB"></p>
+</li>
+<li><p>Redundant行格式</p>
+<p>具体组成如图： <img src="https://user-gold-cdn.xitu.io/2019/3/12/169710e9ca9cbeb5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="image_1ctfppb4c1cng1m8718l91760jde9.png-36.2kB"></p>
+</li>
+<li><p>Dynamic和Compressed行格式</p>
+<p>这两种行格式类似于COMPACT行格式，只不过在处理行溢出数据时有点儿分歧，它们不会在记录的真实数据处存储字符串的前768个字节，而是把所有的字节都存储到其他页面中，只在记录的真实数据处存储其他页面的地址。</p>
+<p>另外，Compressed行格式会采用压缩算法对页面进行压缩。</p>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>一个页一般是16KB，当记录中的数据太多，当前页放不下的时候，会把多余的数据存储到其他页中，这种现象称为行溢出。</li>
+</ul>
+<h3 id="InnoDB和MyISAM的区别"><a href="#InnoDB和MyISAM的区别" class="headerlink" title="InnoDB和MyISAM的区别"></a>InnoDB和MyISAM的区别</h3><ol>
 <li><p>InnoDB 支持事务，MyISAM 不支持事务。这是 MySQL 将默认存储引擎从 MyISAM 变成 InnoDB 的重要原因之一。</p>
 </li>
 <li><p>InnoDB 支持外键，而 MyISAM 不支持。对一个包含外键的 InnoDB 表转为 MyISAM 会失败。</p>
 </li>
 <li><p>InnoDB 是聚集索引，MyISAM 是非聚集索引。聚簇索引的文件存放在主键索引的叶子节点上，因此 InnoDB 必须要有主键，通过主键索引效率很高。但是辅助索引需要两次查询，先查询到主键，然后再通过主键查询到数据。因此，主键不应该过大，因为主键太大，其他索引也都会很大。而 MyISAM 是非聚集索引，数据文件是分离的，索引保存的是数据文件的指针。主键索引和辅助索引是独立的。 </p>
 </li>
-<li><p>InnoDB 不保存表的具体行数，执行 select count(*) from table 时需要全表扫描。而MyISAM 用一个变量保存了整个表的行数，执行上述语句时只需要读出该变量即可，速度很快。</p>
+<li><p>InnoDB 不保存表的具体行数，由于事务和隔离级别的原因，行数可能不同，执行 select count(*) from table 时需要全表扫描。而MyISAM 用一个变量保存了整个表的行数，执行上述语句时只需要读出该变量即可，速度很快。</p>
 </li>
 <li><p>InnoDB 最小的锁粒度是行锁，MyISAM 最小的锁粒度是表锁。一个更新语句会锁住整张表，导致其他查询和更新都会被阻塞，因此并发访问受限。这也是 MySQL 将默认存储引擎从 MyISAM 变成 InnoDB 的重要原因之一。</p>
 </li>
 </ol>
-<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><ol>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>MyISAM</th>
+<th>InnoDB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>聚集索引</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>高速缓存</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>外键</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>多粒度锁</td>
+<td>表级锁</td>
+<td>行级锁</td>
+</tr>
+<tr>
+<td>MVCC</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+<tr>
+<td>存储限制</td>
+<td>256TB</td>
+<td>64TB</td>
+</tr>
+<tr>
+<td>事务</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+</tbody></table>
+<h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><h3 id="聚簇索引"><a href="#聚簇索引" class="headerlink" title="聚簇索引"></a>聚簇索引</h3><ol>
+<li><p>使用记录主键值的大小进行记录和页的排序，这包括三个方面的含义：</p>
+<ul>
+<li>页内的记录是按照主键的大小顺序排成一个单向链表。</li>
+<li>各个存放用户记录的页也是根据页中用户记录的主键大小顺序排成一个双向链表。</li>
+<li>存放目录项记录的页分为不同的层次，在同一层次中的页也是根据页中目录项记录的主键大小顺序排成一个双向链表。</li>
+</ul>
+</li>
+<li><p>B+树的叶子节点存储的是完整的用户记录。</p>
+<p>所谓完整的用户记录，就是指这个记录中存储了所有列的值（包括隐藏列）。</p>
+</li>
+</ol>
+<p>我们把具有这两种特性的B+树称为聚簇索引，所有完整的用户记录都存放在这个聚簇索引的叶子节点处。这种聚簇索引并不需要我们在MySQL语句中显式的使用INDEX语句去创建，InnoDB存储引擎会自动的为我们创建聚簇索引。</p>
+<h3 id="二级索引"><a href="#二级索引" class="headerlink" title="二级索引"></a>二级索引</h3><p>聚簇索引的叶子节点存储了一行完整的数据，而二级索引只存储了主键值，相比于聚簇索引，占用的空间要少。当我们需要为表建立多个索引时，如果都是聚簇索引，那将占用大量内存空间，所以InnoDB中主键所建立的是聚簇索引，而唯一索引、普通索引、前缀索引等都是二级索引。</p>
+<p>InnoDB中索引即数据，也就是聚簇索引的那棵B+树的叶子节点中已经把所有完整的用户记录都包含了，而MyISAM的索引方案虽然也使用树形结构，但是却将索引和数据分开存储：</p>
+<ul>
+<li>将表中的记录按照记录的插入顺序单独存储在一个文件中，称之为数据文件。这个文件并不划分为若干个数据页，有多少记录就往这个文件中塞多少记录就成了。我们可以通过行号而快速访问到一条记录。</li>
+</ul>
+<p><img src="/posts/14ea6df7/image-20210602134612438.png" alt="image-20210602134612438"></p>
+<h3 id="索引的代价"><a href="#索引的代价" class="headerlink" title="索引的代价"></a>索引的代价</h3><ul>
+<li><p>空间上的代价</p>
+<p>这个是显而易见的，每建立一个索引都要为它建立一棵B+树，每一棵B+树的每一个节点都是一个数据页，一个页默认会占用16KB的存储空间，一棵很大的B+树由许多数据页组成，会占用很大的存储空间。</p>
+</li>
+<li><p>时间上的代价</p>
+<p>每次对表中的数据进行增、删、改操作时，都需要去修改各个B+树索引。B+树每层节点都是按照索引列的值从小到大的顺序排序而组成了双向链表，不论是叶子节点中的记录，还是内节点中的记录都是按照索引列的值从小到大的顺序而形成了一个单向链表。而增、删、改操作可能会对节点和记录的排序造成破坏，所以存储引擎需要额外的时间进行一些记录移位，页面分裂、页面回收等操作来维护好节点和记录的排序。如果我们建了许多索引，每个索引对应的B+树都要进行相关的维护操作，会造成性能的浪费。</p>
+</li>
+</ul>
+<h3 id="索引的挑选"><a href="#索引的挑选" class="headerlink" title="索引的挑选"></a>索引的挑选</h3><ul>
+<li><p>只为用于搜索、排序或分组的列创建索引：只为出现在WHERE子句中的列、连接子句中的连接列，或者出现在ORDER BY或GROUP BY子句中的列创建索引。</p>
+</li>
+<li><p>考虑列的基数：最好为那些列的基数大的列（值的种类多）建立索引，为基数太小列的建立索引效果可能不好。</p>
+</li>
+<li><p>索引列的类型尽量小：</p>
+</li>
+<li><ul>
+<li>数据类型越小，在查询时进行的比较操作越快（这是CPU层次的东东）</li>
+<li>数据类型越小，索引占用的存储空间就越少，在一个数据页内就可以放下更多的记录，从而减少磁盘I/O带来的性能损耗，也就意味着可以把更多的数据页缓存在内存中，从而加快读写效率。</li>
+</ul>
+</li>
+<li><p>索引字符串值的前缀：</p>
+</li>
+<li><ul>
+<li>B+树索引中的记录需要把该列的完整字符串存储起来，而且字符串越长，在索引中占用的存储空间越大。</li>
+<li>如果B+树索引中索引列存储的字符串很长，那在做字符串比较时会占用更多的时间。</li>
+<li>无法支持使用索引排序，只能使用文件排序。</li>
+</ul>
+</li>
+<li><p>让索引列在比较表达式中单独出现：如果索引列在比较表达式中不是以单独列的形式出现，而是以某个表达式，或者函数调用形式出现的话，是用不到索引的。</p>
+</li>
+<li><p>主键插入顺序：让主键具有AUTO_INCREMENT，让存储引擎自己为表生成主键，而不是我们手动插入。</p>
+</li>
+<li><p>避免冗余和重复索引。</p>
+</li>
+</ul>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><ol>
 <li><strong>原子性</strong>（Atomicity） ： 事务是最小的执行单位，不允许分割。事务的原子性确保动作要么全部完成，要么完全不起作用；</li>
 <li><strong>一致性</strong>（Consistency）： 执行事务前后，数据保持一致，例如转账业务中，无论事务是否成功，转账者和收款人的总额应该是不变的；</li>
 <li><strong>隔离性</strong>（Isolation）： 并发访问数据库时，一个用户的事务不被其他事务所干扰，各并发事务之间数据库是独立的；</li>
 <li><strong>持久性</strong>（Durability）： 一个事务被提交之后。它对数据库中数据的改变是持久的，即使数据库发生故障也不应该对其有任何影响。</li>
 </ol>
 <img src="/posts/14ea6df7/169d7fd5bd4ce2f1" alt="image_1d7bvq3401fpe1eum1d7qkop1f479.png-69.6kB" style="zoom:80%;">
+
+
 
 <h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><h3 id="事务并发执行遇到的问题"><a href="#事务并发执行遇到的问题" class="headerlink" title="事务并发执行遇到的问题"></a><strong>事务并发执行遇到的问题</strong></h3><p><strong>脏写</strong>：如果一个事务修改了另一个未提交事务修改过的数据，那就意味着发生了脏写。</p>
 <p><strong>脏读</strong>：一个事务读到了另一个未提交事务修改过的数据。比如事务B执行过程中修改了数据X，在未提交前，事务A读取了X，而事务B却回滚了，这样事务A就形成了脏读。即当前事务读到的数据是别的事务想要修改成为的但是没有修改成功的数据。</p>
@@ -258,11 +446,16 @@
 <li><strong>REPEATABLE-READ(可重复读)：</strong> 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，<strong>可以阻止脏读和不可重复读，但幻读仍有可能发生</strong>。</li>
 <li><strong>SERIALIZABLE(可串行化)：</strong> 最高的隔离级别，完全服从 ACID 的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，<strong>该级别可以防止脏读、不可重复读以及幻读</strong>。</li>
 </ul>
-<p>解决脏读、不可重复读或幻读的方式：</p>
+<p><strong>解决脏读、不可重复读或幻读的方式：</strong></p>
 <p>方案一：读操作利用多版本并发控制（MVCC），写操作进行加锁。</p>
 <p>通过生成一个ReadView，然后通过ReadView找到符合条件的记录版本（历史版本是由undo日志构建的），其实就像是在生成ReadView的那个时刻做了一次时间静止（就像用相机拍了一个快照），查询语句只能读到在生成ReadView之前已提交事务所做的更改，在生成ReadView之前未提交的事务或者之后才开启的事务所做的更改是看不到的。而写操作肯定针对的是最新版本的记录，读记录的历史版本和改动记录的最新版本本身并不冲突，也就是采用MVCC时，读-写操作并不冲突。</p>
 <p>方案二：读、写操作都采用加锁的方式。</p>
+<p>一些业务场景不允许读取记录的旧版本，而是每次都必须去读取记录的最新版本，这样在读取记录的时候也就需要对其进行加锁操作。</p>
 <p>采用MVCC方式的话，读-写操作彼此并不冲突，性能更高，采用加锁方式的话，读-写操作彼此需要排队执行，影响性能。</p>
+<p><strong>快照读（Consistent Reads）</strong></p>
+<p>事务利用MVCC进行的读取操作称之为一致性读，或者快照读。所有普通的SELECT语句（plain SELECT）在READ COMMITTED、REPEATABLE READ隔离级别下都算是一致性读。一致性读并不会对表中的任何记录做加锁操作，其他事务可以自由的对表中的记录做改动。</p>
+<p><strong>当前读（Locking Reads）</strong></p>
+<p>读取的是记录的最新版本，读取时还要保证其他并发事务不能修改当前记录，会对读取的记录进行加锁。</p>
 <h3 id="MVCC（多版本并发控制）"><a href="#MVCC（多版本并发控制）" class="headerlink" title="MVCC（多版本并发控制）"></a>MVCC（多版本并发控制）</h3><p>MVCC（Multi-Version Concurrency Control ，多版本并发控制）是一种用来解决读-写冲突的无锁并发控制，也就是为事务分配单向增长的时间戳，为每个修改保存一个版本，版本与事务时间戳关联，读操作只读该事务开始前的数据库的快照。就是在使用READ COMMITTD、REPEATABLE READ这两种隔离级别的事务在执行普通的SELECT操作时访问记录的版本链的过程，这样子可以使不同事务的读-写、写-读操作并发执行，从而提升系统性能。</p>
 <p><strong>ReadView</strong></p>
 <p>READ COMMITTED —— 每次读取数据前都生成一个ReadView，即每次读取数据都可以读到最新被提交的数据。</p>
@@ -272,6 +465,21 @@
 <li>读-读：并发事务相继读取相同的记录，不存在任何问题，也不需要并发控制。</li>
 <li>写-写：并发事务相继对相同的记录做出改动，有线程安全问题，可能会存在更新丢失问题。</li>
 <li>读-写：一个事务进行读取操作，另一个进行改动操作。有线程安全问题，可能会造成事务隔离性问题，可能遇到脏读，不可重复读，幻读。</li>
+</ul>
+<p><strong>共享锁和独占锁</strong></p>
+<ul>
+<li>共享锁，英文名：Shared Locks，简称S锁。在事务要读取一条记录时，需要先获取该记录的S锁。</li>
+<li>独占锁，也常称排他锁，英文名：Exclusive Locks，简称X锁。在事务要改动一条记录时，需要先获取该记录的X锁。</li>
+</ul>
+<p><strong>意向锁</strong></p>
+<ul>
+<li>意向共享锁，英文名：Intention Shared Lock，简称IS锁。当事务准备在某条记录上加S锁时，需要先在表级别加一个IS锁。</li>
+<li>意向独占锁，英文名：Intention Exclusive Lock，简称IX锁。当事务准备在某条记录上加X锁时，需要先在表级别加一个IX锁。</li>
+</ul>
+<h4 id="InnoDB中的行级锁"><a href="#InnoDB中的行级锁" class="headerlink" title="InnoDB中的行级锁"></a>InnoDB中的行级锁</h4><ul>
+<li>Record Locks：分为S锁和X锁，当一个事务获取了一条记录的S锁后，其他事务也可以继续获取该记录的S锁，但不可以继续获取X锁；当一个事务获取了一条记录的X锁后，其他事务既不可以继续获取该记录的S锁，也不可以继续获取X锁；</li>
+<li>Gap Locks： Gap Locks的提出仅仅是为了防止插入幻影记录而提出的，共享gap锁和独占gap锁起到的作用都是相同的。而且如果你对一条记录加了gap锁（不论是共享gap锁还是独占gap锁），并不会限制其他事务对这条记录加正经记录锁或者继续加gap锁，再强调一遍，gap锁的作用仅仅是为了防止插入幻影记录的而已。为了实现阻止其他事务插入最后一条记录之后的间隙，我们可以给索引中的最后一条记录，也就是最后一条记录所在页面的Supremum记录加上一个gap锁。</li>
+<li>Next-Key Locks：本质就是一个Record Locks和一个Gap Locks的合体，它既能保护该条记录，又能阻止别的事务将新记录插入被保护记录前边的间隙。</li>
 </ul>
 
       
@@ -710,7 +918,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-05-10 21:01:42" itemprop="dateModified" datetime="2021-05-10T21:01:42+08:00">2021-05-10</time>
+                <time title="修改时间：2021-06-06 13:50:58" itemprop="dateModified" datetime="2021-06-06T13:50:58+08:00">2021-06-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
