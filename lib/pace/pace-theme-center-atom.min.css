@@ -3,7 +3,7 @@
 .pace .pace-activity,.pace .pace-progress:before{border-radius:50%;display:block;position:absolute}
 .pace.pace-inactive{display:none}.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none;position:fixed;margin:auto;top:0;left:0;right:0;bottom:0}
 .pace .pace-progress{position:absolute;-webkit-transform:translate3d(0,0,0)!important;-ms-transform:translate3d(0,0,0)!important;transform:translate3d(0,0,0)!important}
-.pace .pace-progress:before{content:attr(data-progress-text);text-align:center;color:#fff;background:#0099cc;font-family:"Helvetica Neue",sans-serif;font-size:14px;font-weight:100;line-height:1;padding:20% 0 7px;width:50%;height:40%;margin:10px 0 0 30px;z-index:999}
+.pace .pace-progress:before{content:attr(data-progress-text);text-align:center;color:#fff;background:#ffffff;font-family:"Helvetica Neue",sans-serif;font-size:14px;font-weight:100;line-height:1;padding:20% 0 7px;width:50%;height:40%;margin:10px 0 0 30px;z-index:999}
 
 /*决定外圈旋转*/
 @-webkit-keyframes pace-theme-center-atom-spin{0%{-webkit-transform:rotate(0)}100%{-webkit-transform:rotate(359deg)}}
