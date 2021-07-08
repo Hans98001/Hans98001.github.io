@@ -19,69 +19,71 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"hans98001.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Java SE final&#x2F;static&#x2F;static final final static static final   反射 Java集合类 总体分析 集合类介绍 Iterator 与 ListIterator详解     Java并发 进程和线程 进程和线程的区别 多线程的优势 上下文切换   Runnable&#x2F;Callable&#x2F;Thread 类 实现接口 VS 继承 Thread Thr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java">
-<meta property="og:url" content="http://example.com/posts/df2849ec/index.html">
+<meta property="og:url" content="https://hans98001.github.io/posts/df2849ec/index.html">
 <meta property="og:site_name" content="May the Force be with you">
 <meta property="og:description" content="Java SE final&#x2F;static&#x2F;static final final static static final   反射 Java集合类 总体分析 集合类介绍 Iterator 与 ListIterator详解     Java并发 进程和线程 进程和线程的区别 多线程的优势 上下文切换   Runnable&#x2F;Callable&#x2F;Thread 类 实现接口 VS 继承 Thread Thr">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/posts/df2849ec/timg.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE.png">
-<meta property="og:image" content="http://example.com/posts/df2849ec/16.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/15.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/14.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/13.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/12.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/11.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-6be60d2aea3c941613272419ff50a780_720w.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-547662c1659066f06630de1e827082fa_720w.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-0b3dbdbbcd00f51279dbdebd52b4ae31_720w.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-8616d6af5228e2ec754ce00f978a26e3_720w.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/22813473-1353a9e7f94780e3.png">
-<meta property="og:image" content="http://example.com/posts/df2849ec/20.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/25.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/26.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/27.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/21.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/22.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/23.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/24.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/8db4a3bdfb238da1a1c4431d2b6e075c_720w.png">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-43cf3e7966cca83c2d33b86eae19c00e_r.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-c68248bb5d9b4d64d22600571e996446_hd-1603466619082.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-e64bf72c5c04412f626b21753aa9e1a1_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-ee924f8693cff51785ad6637ac5b21c1_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-8ec294de7d0f9013788e3fb5c76069ef_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-64e8b19eeb70d9cf87c27fe4c5c0fc81_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-82e0c12a1b26f7979ed9241e169affda_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-c920a0540ce0651003a5326f6ef9891d_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-99ad2cd809fcb86dd791ff7f65fb1779_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-861683acac47577c81f2b7493dd05649_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-c845802f9187953ed576e0555f76da42_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-555b2be7d76e78511a6d6fed3304927f_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-24a96669241e81439c636e83976ba152_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-5ca61395f37cef73c7bbe7808f9ea219_hd.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/640.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/2.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/3.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/4.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/5.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/6.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/7.jpg">
-<meta property="og:image" content="http://example.com/posts/df2849ec/v2-54e35a953efa7b9d7cb078a3d0d7d936_720w.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/timg.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%9B%BE.png">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/16.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/15.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/14.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/13.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/12.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/11.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/6403cb23540500154e3128f4a5e5e481.png">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/image-20210707205136783.png">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-6be60d2aea3c941613272419ff50a780_720w.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-547662c1659066f06630de1e827082fa_720w.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-0b3dbdbbcd00f51279dbdebd52b4ae31_720w.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-8616d6af5228e2ec754ce00f978a26e3_720w.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/22813473-1353a9e7f94780e3.png">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/20.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/25.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/26.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/27.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/21.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/22.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/23.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/24.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/8db4a3bdfb238da1a1c4431d2b6e075c_720w.png">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-43cf3e7966cca83c2d33b86eae19c00e_r.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-c68248bb5d9b4d64d22600571e996446_hd-1603466619082.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-e64bf72c5c04412f626b21753aa9e1a1_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-ee924f8693cff51785ad6637ac5b21c1_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-8ec294de7d0f9013788e3fb5c76069ef_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-64e8b19eeb70d9cf87c27fe4c5c0fc81_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-82e0c12a1b26f7979ed9241e169affda_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-c920a0540ce0651003a5326f6ef9891d_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-99ad2cd809fcb86dd791ff7f65fb1779_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-861683acac47577c81f2b7493dd05649_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-c845802f9187953ed576e0555f76da42_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-555b2be7d76e78511a6d6fed3304927f_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-24a96669241e81439c636e83976ba152_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-5ca61395f37cef73c7bbe7808f9ea219_hd.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/640.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/2.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/3.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/4.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/5.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/6.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/7.jpg">
+<meta property="og:image" content="https://hans98001.github.io/posts/df2849ec/v2-54e35a953efa7b9d7cb078a3d0d7d936_720w.jpg">
 <meta property="article:published_time" content="2020-09-19T04:11:32.000Z">
-<meta property="article:modified_time" content="2021-07-07T05:45:03.363Z">
+<meta property="article:modified_time" content="2021-07-08T06:45:03.224Z">
 <meta property="article:author" content="Tianyi Han">
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/posts/df2849ec/timg.jpg">
+<meta name="twitter:image" content="https://hans98001.github.io/posts/df2849ec/timg.jpg">
 
-<link rel="canonical" href="http://example.com/posts/df2849ec/">
+<link rel="canonical" href="https://hans98001.github.io/posts/df2849ec/">
 
 
 <script id="page-configurations">
@@ -224,7 +226,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/posts/df2849ec/">
+    <link itemprop="mainEntityOfPage" href="https://hans98001.github.io/posts/df2849ec/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/upload/header.jpg">
@@ -254,7 +256,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-07 13:45:03" itemprop="dateModified" datetime="2021-07-07T13:45:03+08:00">2021-07-07</time>
+                <time title="修改时间：2021-07-08 14:45:03" itemprop="dateModified" datetime="2021-07-08T14:45:03+08:00">2021-07-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,13 +280,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>40k</span>
+              <span>41k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>36 分钟</span>
+              <span>37 分钟</span>
             </span>
 
         </div>
@@ -712,7 +714,6 @@
 <li>限期等待（TIMED_WAITING）：无需等待其它线程显式地唤醒，在一定时间之后会被系统自动唤醒。调用 Thread.sleep() 方法使线程进入限期等待状态时，常常用“使一个线程睡眠”进行描述。调用 Object.wait() 方法使线程进入限期等待或者无限期等待时，常常用“挂起一个线程”进行描述。睡眠和挂起是用来描述行为，而阻塞和等待用来描述状态。</li>
 <li>死亡（TERMINATED）：可以是线程结束任务之后自己结束，或者产生了异常而结束。</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/9/docs/api/java/lang/Thread.State.html">Java SE 9 Enum Thread.State</a></p>
 <h2 id="J-U-C-AQS"><a href="#J-U-C-AQS" class="headerlink" title="J.U.C - AQS"></a>J.U.C - AQS</h2><p>java.util.concurrent（J.U.C）大大提高了并发性能，AQS 被认为是 J.U.C 的核心。</p>
 <h3 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h3><p>用来控制一个或者多个线程等待多个线程。</p>
 <p>维护了一个计数器 cnt，每次调用 countDown() 方法会让计数器的值减 1，减到 0 的时候，那些因为调用 await() 方法而在等待的线程就会被唤醒。</p>
@@ -748,8 +749,8 @@
 <li>assign：把一个从执行引擎接收到的值赋给工作内存的变量</li>
 <li>store：把工作内存的一个变量的值传送到主内存中</li>
 <li>write：在 store 之后执行，把 store 得到的值放入主内存的变量中</li>
-<li>lock：作用于主内存的变量</li>
-<li>unlock</li>
+<li>lock：作用于主内存中的变量，它将一个变量标志为一个线程独占的状态</li>
+<li>unlock：作用于主内存中的变量，解除变量的锁定状态，被解除锁定状态的变量才能被其他线程锁定</li>
 </ul>
 <h3 id="内存模型三大特性"><a href="#内存模型三大特性" class="headerlink" title="内存模型三大特性"></a>内存模型三大特性</h3><h4 id="1-原子性"><a href="#1-原子性" class="headerlink" title="1. 原子性"></a>1. 原子性</h4><p>Java 内存模型保证了 read、load、use、assign、store、write、lock 和 unlock 操作具有原子性，例如对一个 int 类型的变量执行 assign 赋值操作，这个操作就是原子性的。但是 Java 内存模型允许虚拟机将没有被 volatile 修饰的 64 位数据（long，double）的读写操作划分为两次 32 位的操作来进行，即 load、store、read 和 write 操作可以不具备原子性。</p>
 <p>有一个错误认识就是，int 等原子性的类型在多线程环境中不会出现线程安全问题。前面的线程不安全示例代码中，cnt 属于 int 类型变量，1000 个线程对它进行自增操作之后，得到的值为 997 而不是 1000。</p>
@@ -765,7 +766,11 @@
 <h4 id="2-可见性"><a href="#2-可见性" class="headerlink" title="2. 可见性"></a>2. 可见性</h4><p>可见性指当一个线程修改了共享变量的值，其它线程能够立即得知这个修改。Java 内存模型是通过在变量修改后将新值同步回主内存，在变量读取前从主内存刷新变量值来实现可见性的。</p>
 <p>主要有三种实现可见性的方式：</p>
 <ul>
-<li>volatile</li>
+<li>volatile：保证了修饰的共享变量在<strong>转换为汇编语言</strong>时，会加上一个以<code>lock</code>为前缀的指令，当CPU发现这个指令时，立即会做两件事情，<ol>
+<li>将当前内核中线程工作内存中该共享变量刷新到主存；</li>
+<li>通知其他内核里缓存的该共享变量内存地址无效；</li>
+</ol>
+</li>
 <li>synchronized，对一个变量执行 unlock 操作之前，必须把变量值同步回主内存。</li>
 <li>final，被 final 关键字修饰的字段在构造器中一旦初始化完成，并且没有发生 this 逃逸（其它线程通过 this 引用访问到初始化了一半的对象），那么其它线程就能看见 final 字段的值。</li>
 </ul>
@@ -798,6 +803,8 @@
 <li>情况二：Thread#1和Thread#2交替进入临界区；轻量级锁</li>
 <li>情况三：Thread#1和Thread#2同时进入临界区。重量级锁</li>
 </ul>
+<img src="/posts/df2849ec/6403cb23540500154e3128f4a5e5e481.png" alt="img" style="zoom:80%;">
+
 <p><strong>偏向锁</strong></p>
 <p>偏向锁的思想是偏向于让第一个获取锁对象的线程，这个线程在之后获取该锁就不再需要进行同步操作，甚至连 CAS 操作也不再需要。</p>
 <p>当锁对象第一次被线程获得的时候，进入偏向状态，标记为 1 01。同时使用 CAS 操作将线程 ID 记录到 Mark Word 中，如果 CAS 操作成功，这个线程以后每次进入这个锁相关的同步块就不需要再进行任何同步操作。</p>
@@ -807,6 +814,8 @@
 <p>轻量级锁是相对于传统的重量级锁而言，它使用 CAS 操作来避免重量级锁使用互斥量的开销。对于绝大部分的锁，在整个同步周期内都是不存在竞争的，因此也就不需要都使用互斥量进行同步，可以先采用 CAS 操作进行同步，如果 CAS 失败了再改用互斥量进行同步。</p>
 <p>当尝试获取一个锁对象时，如果锁对象标记为 0 01，说明锁对象的锁未锁定（unlocked）状态。此时虚拟机在当前线程的虚拟机栈中创建 Lock Record，然后使用 CAS 操作将对象的 Mark Word 更新为 Lock Record 指针。如果 CAS 操作成功了，那么线程就获取了该对象上的锁，并且对象的 Mark Word 的锁标记变为 00，表示该对象处于轻量级锁状态。</p>
 <p>如果 CAS 操作失败了，虚拟机首先会检查对象的 Mark Word 是否指向当前线程的虚拟机栈，如果是的话说明当前线程已经拥有了这个锁对象，那就可以直接进入同步块继续执行，否则说明这个锁对象已经被其他线程线程抢占了。如果有两条以上的线程争用同一个锁，那轻量级锁就不再有效，要膨胀为重量级锁。</p>
+<img src="/posts/df2849ec/image-20210707205136783.png" alt="image-20210707205136783" style="zoom:80%;">
+
 <p><strong>自旋锁</strong></p>
 <p>互斥同步进入阻塞状态的开销都很大，应该尽量避免。在许多应用中，共享数据的锁定状态只会持续很短的一段时间。自旋锁的思想是让一个线程在请求一个共享数据的锁时执行忙循环（自旋）一段时间，如果在这段时间内能获得锁，就可以避免进入阻塞状态。</p>
 <p>自旋锁虽然能避免进入阻塞状态从而减少开销，但是它需要进行忙循环操作占用 CPU 时间，它只适用于共享数据的锁定状态很短的场景。</p>
@@ -858,7 +867,27 @@
 <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h3 id="底层数据结构"><a href="#底层数据结构" class="headerlink" title="底层数据结构"></a>底层数据结构</h3><p>众所周知，HashMap是一个用于存储Key-Value键值对的集合，每一个键值对也叫做<strong>Entry</strong>。这些个键值对（Entry）分散存储在一个数组当中，这个数组就是HashMap的主干。</p>
 <p>HashMap数组每一个元素的初始值都是Null。</p>
 <p><img src="/posts/df2849ec/20.jpg" alt="图片"></p>
-<h4 id="计算规则"><a href="#计算规则" class="headerlink" title="计算规则"></a>计算规则</h4><p>Hash的计算规则</p>
+<h4 id="计算规则"><a href="#计算规则" class="headerlink" title="计算规则"></a>计算规则</h4><p><strong>Hash的计算规则</strong></p>
+<ul>
+<li>除余法：关键码x除以M（往往取散列表长度），并取余数作为散列地址。除余法几乎是最简单的散列方法，散列函数为： h(x) ＝ x mod M。</li>
+<li>乘余取整法：使用此方法时，先让关键码key乘上一个常数A (0&lt; A &lt; 1)，提取乘积的小数部分。然后，再用整数n乘以这个值，对结果向下取整，把它做为散列的地址。散列函数为：<code>hash ( key ) = LOW( n × ( A × key % 1 ) )</code>。 其中，<code>A × key % 1</code>表示取<code>A × key</code>小数部分，即： <code>A × key % 1 = A × key - LOW(A × key)</code>，而<code>LOW(X)</code>是表示对X取下整</li>
+<li>平方取中法：由于整数相除的运行速度通常比相乘要慢，所以有意识地避免使用除余法运算可以提高散列算法的运行时间。平方取中法的具体实现是：先通过求关键码的平方值，从而扩大相近数的差别，然后根据表长度取中间的几位数（往往取二进制的比特位）作为散列函数值。因为一个乘积的中间几位数与乘数的每一数位都相关，所以由此产生的散列地址较为均匀。</li>
+<li>数字分析法：假设关键字集合中的每个关键字都是由 s 位数字组成 (u1, u2, …, us)，分析关键字集中的全体，并从中提取分布均匀的若干位或它们的组合作为地址。数字分析法是取数据元素关键字中某些取值较均匀的数字位作为哈希地址的方法。即当关键字的位数很多时，可以通过对关键字的各位进行分析，丢掉分布不均匀的位，作为哈希值。它只适合于所有关键字值已知的情况。通过分析分布情况把关键字取值区间转化为一个较小的关键字取值区间。</li>
+<li>基数转换法：将关键码值看成另一种进制的数再转换成原来进制的数，然后选其中几位作为散列地址。</li>
+<li>折叠法：有时关键码所含的位数很多，采用平方取中法计算太复杂，则可将关键码分割成位数相同的几部分（最后一部分的位数可以不同），然后取这几部分的叠加和（舍去进位）作为散列地址，这方法称为折叠法。</li>
+</ul>
+<p><strong>equals方法与hashCode方法</strong></p>
+<p>equals方法认定相同的两个对象拥有相同的哈希值，hashCode方法的重写原则就是保证equals方法认定为相同的两个对象拥有相同的哈希值。</p>
+<p><strong>Hash碰撞</strong></p>
+<ul>
+<li>开放寻址法(Open Addressing)：当要插入一个元素时，可以连续地检查或探测散列表的各项，直到有一个空槽来放置待插入的关键字为止。<ul>
+<li>线性探测</li>
+<li>二次探测</li>
+<li>双重探测</li>
+</ul>
+</li>
+<li>链接法(Chaining)：将所有关键字为同义词的结点链接在同一个链表中。</li>
+</ul>
 <p><strong>默认初始化大小</strong></p>
 <p>HashMap的默认初始长度是1&lt;&lt;4，Java类解释成class文件的话，都是16，并且每次自动扩展或是手动初始化时，长度必须是2的幂。</p>
 <p><code>index = HashCode(Key) &amp; (Length - 1)</code></p>
@@ -893,16 +922,6 @@
 <p><img src="/posts/df2849ec/27.jpg" alt="27"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Transfers all entries from current table to newTable.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">transfer</span><span class="params">(Entry[] newTable, <span class="keyword">boolean</span> rehash)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = newTable.length;</span><br><span class="line">    <span class="keyword">for</span> (Entry&lt;K,V&gt; e : table) &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">null</span> != e) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; next = e.next;</span><br><span class="line">            <span class="keyword">if</span> (rehash) &#123;</span><br><span class="line">                e.hash = <span class="keyword">null</span> == e.key ? <span class="number">0</span> : hash(e.key);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> i = indexFor(e.hash, newCapacity);</span><br><span class="line">            e.next = newTable[i];</span><br><span class="line">            newTable[i] = e;</span><br><span class="line">            e = next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong>Hash碰撞</strong></p>
-<ul>
-<li>开放寻址法(Open Addressing)：当要插入一个元素时，可以连续地检查或探测散列表的各项，直到有一个空槽来放置待插入的关键字为止。<ul>
-<li>线性探测</li>
-<li>二次探测</li>
-<li>双重探测</li>
-</ul>
-</li>
-<li>链接法(Chaining)：将所有关键字为同义词的结点链接在同一个链表中。</li>
-</ul>
 <h4 id="存取原理"><a href="#存取原理" class="headerlink" title="存取原理"></a>存取原理</h4><p><strong>1. Put方法的原理</strong></p>
 <p>比如调用 HashMap.put(“apple”, 0) ，插入一个Key为“apple”的元素。这时候我们需要利用一个哈希函数来确定Entry的插入位置（index）：</p>
 <p><code>index = Hash(&quot;apple&quot;)</code></p>
@@ -1035,7 +1054,6 @@
 <p><img src="/posts/df2849ec/v2-5ca61395f37cef73c7bbe7808f9ea219_hd.jpg" alt="img"></p>
 <p>我们就像是工厂的客户。我们只需要向工厂请求一个Car实例，然后它就给我们按照Config创建了一个Car实例。我们完全不用管这个Car实例是怎么一步一步被创建出来。</p>
 <p>实际项目中，有的Service Class可能是十年前写的，有几百个类作为它的底层。假设我们新写的一个API需要实例化这个Service，我们总不可能回头去搞清楚这几百个类的构造函数吧？IoC Container的这个特性就很完美的解决了这类问题——<strong>因为这个架构要求你在写class的时候需要写相应的Config文件，所以你要初始化很久以前的Service类的时候，前人都已经写好了Config文件，你直接在需要用的地方注入这个Service就可以了</strong>。这大大增加了项目的可维护性且降低了开发难度。</p>
-<p>作者：Mingqi<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23277575/answer/169698662">https://www.zhihu.com/question/23277575/answer/169698662</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <h2 id="IoC-控制反转"><a href="#IoC-控制反转" class="headerlink" title="IoC(控制反转)"></a>IoC(控制反转)</h2><p>IoC （Inversion of Control ）控制反转/反转控制。它是一种思想不是一个技术实现。描述的是：Java 开发领域对象的创建以及管理的问题。这个设计思想就是 <strong>将原本在程序中手动创建对象的控制权，交由 Spring 框架来管理。</strong> IoC 在其他语言中也有应用，并非 Spring 特有。<strong>IoC 容器是 Spring 用来实现 IoC 的载体， IoC 容器实际上就是个 Map（key，value）,Map 中存放的是各种对象。</strong></p>
 <p>例如：现有类 A 依赖于类 B</p>
 <ul>
@@ -1130,7 +1148,9 @@
 <h1 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h1><hr>
 <p><em><u>相关文章</u></em></p>
 <ul>
+<li><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/9/docs/api/java/lang/Thread.State.html">Java SE 9 Enum Thread.State</a></li>
 <li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021105716">这道面试题我真不知道面试官想要的回答是什么</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23277575/answer/169698662">Spring IoC有什么好处呢？</a></li>
 </ul>
 
     </div>
@@ -1157,7 +1177,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/posts/df2849ec/" title="Java">http://example.com/posts/df2849ec/</a>
+    <a href="https://hans98001.github.io/posts/df2849ec/" title="Java">https://hans98001.github.io/posts/df2849ec/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -1311,12 +1331,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">109k</span>
+    <span title="站点总字数">110k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:39</span>
+    <span title="站点阅读时长">1:40</span>
 </div>
 <!--
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
